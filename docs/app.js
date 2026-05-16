@@ -472,32 +472,57 @@ async function loadRankingsView() {
 
 async function loadReignsView() {
   const body = document.getElementById("reigns-body");
+  const meta = document.getElementById("reigns-meta");
+  const input = document.getElementById("reigns-search");
   body.innerHTML = `<p style="color: var(--text-dim)">Loading reigns…</p>`;
   let data;
   try { data = await loadJSON("longest_reigns.json"); }
   catch (e) { body.innerHTML = `<p>Failed to load.</p>`; return; }
 
-  const frag = document.createDocumentFragment();
-  data.forEach((row, i) => {
-    const el = document.createElement("article");
-    el.className = "rank-row" + (i < 3 ? " gold" : "");
-    const range = `${fmtShortDate(row.started_on)} → ${row.is_current ? "today" : fmtShortDate(row.ended_on)}`;
-    el.innerHTML = `
-      <div class="rank-pos">${i + 1}</div>
-      ${crestCellHTML(row.club, row.crest)}
-      <div class="rank-info">
-        <div class="rank-name">${escapeHtml(row.club)}${row.is_current ? ' <span style="color:var(--gold);font-size:11px;">· current</span>' : ""}</div>
-        <div class="rank-sub">${range} · ${row.matches} matches</div>
-      </div>
-      <div class="rank-metric">
-        <span class="big">${fmtNum(row.days)}</span>
-        <span class="lbl">days</span>
-      </div>
-    `;
-    frag.appendChild(el);
-  });
-  body.innerHTML = "";
-  body.appendChild(frag);
+  function render(query) {
+    const q = (query || "").trim().toLowerCase();
+    const filtered = q
+      ? data.filter(r => r.club.toLowerCase().includes(q))
+      : data;
+    if (meta) {
+      meta.textContent = q
+        ? `${fmtNum(filtered.length)} reign${filtered.length === 1 ? "" : "s"} match “${query.trim()}”.`
+        : `Top ${fmtNum(data.length)} uninterrupted reigns.`;
+    }
+    const frag = document.createDocumentFragment();
+    filtered.forEach((row) => {
+      const rank = data.indexOf(row) + 1;
+      const isTop3 = !q && rank <= 3;
+      const el = document.createElement("article");
+      el.className = "rank-row" + (isTop3 ? " gold" : "");
+      const range = `${fmtShortDate(row.started_on)} → ${row.is_current ? "today" : fmtShortDate(row.ended_on)}`;
+      el.innerHTML = `
+        <div class="rank-pos">${rank}</div>
+        ${crestCellHTML(row.club, row.crest)}
+        <div class="rank-info">
+          <div class="rank-name">${escapeHtml(row.club)}${row.is_current ? ' <span style="color:var(--gold);font-size:11px;">· current</span>' : ""}</div>
+          <div class="rank-sub">${range} · ${row.matches} matches</div>
+        </div>
+        <div class="rank-metric">
+          <span class="big">${fmtNum(row.days)}</span>
+          <span class="lbl">days</span>
+        </div>
+      `;
+      frag.appendChild(el);
+    });
+    body.innerHTML = "";
+    if (filtered.length === 0) {
+      body.innerHTML = `<p style="color: var(--text-dim)">No reigns match.</p>`;
+    } else {
+      body.appendChild(frag);
+    }
+  }
+
+  render("");
+  if (input && !input.dataset.wired) {
+    input.dataset.wired = "1";
+    input.addEventListener("input", () => render(input.value));
+  }
 }
 
 /* ---------- Countries ---------- */

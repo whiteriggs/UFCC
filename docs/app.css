@@ -647,17 +647,34 @@ body.sidebar-collapsed .activity-bar { transform: translateX(-100%); }
 /* ---------- Search ---------- */
 #search-input,
 .view-search {
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
   width: 100%;
   background: var(--bg-2);
   border: 1px solid var(--line);
   color: var(--text);
   font: inherit;
   font-size: 15px;
+  line-height: 1.3;
   padding: 10px 14px;
   border-radius: 10px;
   margin-top: 10px;
   box-sizing: border-box;
 }
+#search-input::-webkit-search-decoration,
+#search-input::-webkit-search-cancel-button,
+#search-input::-webkit-search-results-button,
+#search-input::-webkit-search-results-decoration,
+.view-search::-webkit-search-decoration,
+.view-search::-webkit-search-cancel-button,
+.view-search::-webkit-search-results-button,
+.view-search::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+#search-input::placeholder,
+.view-search::placeholder { color: var(--text-dim); opacity: 1; }
 #search-input:focus,
 .view-search:focus { outline: 2px solid var(--gold); outline-offset: 0; border-color: transparent; }
 .search-meta { margin-top: 8px; }
