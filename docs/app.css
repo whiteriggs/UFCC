@@ -645,7 +645,8 @@ body.sidebar-collapsed .activity-bar { transform: translateX(-100%); }
 .stat-card.gold .val { color: var(--gold); }
 
 /* ---------- Search ---------- */
-#search-input {
+#search-input,
+.view-search {
   width: 100%;
   background: var(--bg-2);
   border: 1px solid var(--line);
@@ -655,8 +656,10 @@ body.sidebar-collapsed .activity-bar { transform: translateX(-100%); }
   padding: 10px 14px;
   border-radius: 10px;
   margin-top: 10px;
+  box-sizing: border-box;
 }
-#search-input:focus { outline: 2px solid var(--gold); outline-offset: 0; border-color: transparent; }
+#search-input:focus,
+.view-search:focus { outline: 2px solid var(--gold); outline-offset: 0; border-color: transparent; }
 .search-meta { margin-top: 8px; }
 .search-result {
   background: var(--bg-2);

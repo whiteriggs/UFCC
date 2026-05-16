@@ -414,31 +414,58 @@ async function loadJSON(name) {
 
 async function loadRankingsView() {
   const body = document.getElementById("rankings-body");
+  const meta = document.getElementById("rankings-meta");
+  const input = document.getElementById("rankings-search");
   body.innerHTML = `<p style="color: var(--text-dim)">Loading rankings…</p>`;
   let data;
   try { data = await loadJSON("rankings.json"); }
   catch (e) { body.innerHTML = `<p>Failed to load.</p>`; return; }
 
-  const frag = document.createDocumentFragment();
-  data.slice(0, 200).forEach((row, i) => {
-    const el = document.createElement("article");
-    el.className = "rank-row" + (i < 3 ? " gold" : "");
-    el.innerHTML = `
-      <div class="rank-pos">${i + 1}</div>
-      ${crestCellHTML(row.name, row.crest)}
-      <div class="rank-info">
-        <div class="rank-name">${escapeHtml(row.name)}</div>
-        <div class="rank-sub">${fmtNum(row.matches)} matches · ${row.reigns} reign${row.reigns === 1 ? "" : "s"}</div>
-      </div>
-      <div class="rank-metric">
-        <span class="big">${fmtNum(row.days)}</span>
-        <span class="lbl">days</span>
-      </div>
-    `;
-    frag.appendChild(el);
-  });
-  body.innerHTML = "";
-  body.appendChild(frag);
+  function render(query) {
+    const q = (query || "").trim().toLowerCase();
+    const filtered = q
+      ? data.filter(r => r.name.toLowerCase().includes(q))
+      : data;
+    const limit = q ? filtered.length : 200;
+    const slice = filtered.slice(0, limit);
+    if (meta) {
+      meta.textContent = q
+        ? `${fmtNum(filtered.length)} club${filtered.length === 1 ? "" : "s"} match “${query.trim()}”.`
+        : `Showing top ${Math.min(200, data.length)} of ${fmtNum(data.length)} clubs.`;
+    }
+    const frag = document.createDocumentFragment();
+    slice.forEach((row, i) => {
+      const rank = data.indexOf(row) + 1;
+      const isTop3 = !q && i < 3;
+      const el = document.createElement("article");
+      el.className = "rank-row" + (isTop3 ? " gold" : "");
+      el.innerHTML = `
+        <div class="rank-pos">${rank}</div>
+        ${crestCellHTML(row.name, row.crest)}
+        <div class="rank-info">
+          <div class="rank-name">${escapeHtml(row.name)}</div>
+          <div class="rank-sub">${fmtNum(row.matches)} matches · ${row.reigns} reign${row.reigns === 1 ? "" : "s"}</div>
+        </div>
+        <div class="rank-metric">
+          <span class="big">${fmtNum(row.days)}</span>
+          <span class="lbl">days</span>
+        </div>
+      `;
+      frag.appendChild(el);
+    });
+    body.innerHTML = "";
+    if (slice.length === 0) {
+      body.innerHTML = `<p style="color: var(--text-dim)">No clubs match.</p>`;
+    } else {
+      body.appendChild(frag);
+    }
+  }
+
+  render("");
+  if (input && !input.dataset.wired) {
+    input.dataset.wired = "1";
+    input.addEventListener("input", () => render(input.value));
+  }
 }
 
 /* ---------- Longest reigns ---------- */
