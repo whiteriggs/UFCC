@@ -110,8 +110,9 @@ function scheduleRender() {
 }
 
 function renderVisible() {
-  const scrollTop = feedEl.scrollTop;
-  const viewportH = feedEl.clientHeight;
+  const feedTop = contentEl.getBoundingClientRect().top + window.scrollY;
+  const scrollTop = Math.max(0, window.scrollY - feedTop);
+  const viewportH = window.innerHeight;
   const firstIdx = Math.max(0, Math.floor(scrollTop / ROW_H) - BUFFER);
   const lastIdx  = Math.min(matches.length - 1,
                             Math.ceil((scrollTop + viewportH) / ROW_H) + BUFFER);
@@ -138,10 +139,9 @@ function renderVisible() {
 
 function updateYearLabel() {
   if (!years.length) return;
-  const scrollTop = feedEl.scrollTop;
+  const feedTop = contentEl.getBoundingClientRect().top + window.scrollY;
+  const scrollTop = Math.max(0, window.scrollY - feedTop);
   const topRowIdx = Math.floor(scrollTop / ROW_H);
-  // Find year whose first_index <= topRowIdx and next > topRowIdx.
-  // years sorted DESC (recent first because matches are DESC). Binary search.
   let lo = 0, hi = years.length - 1, ans = 0;
   while (lo <= hi) {
     const mid = (lo + hi) >> 1;
@@ -149,8 +149,8 @@ function updateYearLabel() {
     else hi = mid - 1;
   }
   yearLabelEl.textContent = years[ans].year;
-  // position thumb at scroll proportion
-  const ratio = scrollTop / (feedEl.scrollHeight - feedEl.clientHeight || 1);
+  const totalH = matches.length * ROW_H;
+  const ratio = totalH > 0 ? scrollTop / totalH : 0;
   const trackH = timelineEl.clientHeight;
   const y = Math.max(8, Math.min(trackH - 8, ratio * trackH));
   thumbEl.style.top = `${y}px`;
@@ -168,8 +168,9 @@ function buildTimelineTicks() {
 }
 
 function scrollToIndex(idx, smooth) {
-  const top = idx * ROW_H;
-  feedEl.scrollTo({ top, behavior: smooth ? "smooth" : "auto" });
+  const feedTop = contentEl.getBoundingClientRect().top + window.scrollY;
+  const top = feedTop + idx * ROW_H;
+  window.scrollTo({ top, behavior: smooth ? "smooth" : "auto" });
 }
 
 function attachTimelineDrag() {
@@ -215,7 +216,7 @@ async function main() {
   buildTimelineTicks();
   attachTimelineDrag();
 
-  feedEl.addEventListener("scroll", scheduleRender, { passive: true });
+  window.addEventListener("scroll", scheduleRender, { passive: true });
   window.addEventListener("resize", scheduleRender);
   window.addEventListener("scroll", updateMiniChamp, { passive: true });
   updateMiniChamp();

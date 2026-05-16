@@ -162,20 +162,17 @@ html, body {
 .layout {
   display: grid;
   grid-template-columns: 1fr 56px;
-  height: calc(100dvh - 49px);
   position: relative;
+  max-width: 820px;
+  margin: 0 auto;
 }
 
 /* ---------- Feed ---------- */
 
 .feed {
   position: relative;
-  overflow-y: auto;
-  overflow-x: hidden;
-  scrollbar-width: none;
   padding: 24px 24px 80px;
 }
-.feed::-webkit-scrollbar { display: none; }
 
 .feed-content {
   position: relative;
@@ -290,7 +287,10 @@ html, body {
 /* ---------- Timeline ---------- */
 
 .timeline {
-  position: relative;
+  position: sticky;
+  top: 49px;
+  height: calc(100dvh - 49px);
+  align-self: start;
   background: var(--bg);
   border-left: 1px solid var(--line);
   user-select: none;
