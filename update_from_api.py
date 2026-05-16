@@ -202,26 +202,36 @@ def insert_match_and_update_reign(
 # ---------------------- Fixture processing ----------------------
 
 def fetch_finished_fixtures(team_id: int, since_iso: str) -> list[dict]:
-    """Pide fixtures FT/AET/PEN entre `since_iso` (exclusivo) y hoy."""
-    today = date.today().isoformat()
-    since = (date.fromisoformat(since_iso) + timedelta(days=1)).isoformat()
+    """Pide fixtures FT/AET/PEN entre `since_iso` (exclusivo) y hoy.
+
+    api-football exige `season` cuando filtras por `team`. Como una ventana
+    de fechas puede cruzar temporadas (ej. mayo→agosto), pedimos cada año
+    necesario y fusionamos.
+    """
+    today = date.today()
+    since = date.fromisoformat(since_iso) + timedelta(days=1)
     if since > today:
         return []
-    data = api_get(
-        "/fixtures",
-        {
-            "team": team_id,
-            "from": since,
-            "to": today,
-            "timezone": "UTC",
-        },
-    )
-    out = []
-    for f in data.get("response", []):
-        short = f["fixture"]["status"]["short"]
-        if short in FINISHED_STATUSES:
-            out.append(f)
-    # Orden cronológico.
+    since_str = since.isoformat()
+    today_str = today.isoformat()
+    seasons = sorted({since.year, today.year})
+    merged: dict[int, dict] = {}
+    for season in seasons:
+        data = api_get(
+            "/fixtures",
+            {
+                "team": team_id,
+                "season": season,
+                "from": since_str,
+                "to": today_str,
+                "timezone": "UTC",
+            },
+        )
+        for f in data.get("response", []):
+            short = f["fixture"]["status"]["short"]
+            if short in FINISHED_STATUSES:
+                merged[int(f["fixture"]["id"])] = f
+    out = list(merged.values())
     out.sort(key=lambda f: f["fixture"]["date"])
     return out
 
