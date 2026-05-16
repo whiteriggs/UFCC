@@ -14,7 +14,15 @@ const timelineEl = $("#timeline");
 const trackEl = $("#timeline-track");
 const thumbEl = $("#timeline-thumb");
 const yearLabelEl = $("#timeline-year");
-const nowEl = $("#now");
+const heroEl = $("#hero");
+const heroCrestEl = $("#hero-crest");
+const heroNameEl = $("#hero-name");
+const heroDaysEl = $("#hero-days");
+const heroSinceEl = $("#hero-since");
+const miniEl = $("#mini-champ");
+const miniCrestEl = $("#mini-crest");
+const miniNameEl = $("#mini-name");
+const miniDaysEl = $("#mini-days-n");
 const loadingEl = $("#loading");
 
 let matches = [];        // raw rows, DESC by match_no
@@ -203,19 +211,75 @@ async function main() {
   spacerEl.style.height = "0";
   contentEl.style.height = `${matches.length * ROW_H}px`;
 
-  if (matches.length) {
-    const first = matches[0];
-    nowEl.innerHTML = `Current champion: <strong>${escapeHtml(first[8])}</strong>
-      · ${matches.length.toLocaleString()} matches since 1871`;
-  }
+  setupChampionHero();
   buildTimelineTicks();
   attachTimelineDrag();
 
   feedEl.addEventListener("scroll", scheduleRender, { passive: true });
   window.addEventListener("resize", scheduleRender);
+  window.addEventListener("scroll", updateMiniChamp, { passive: true });
+  updateMiniChamp();
   renderVisible();
 
   loadingEl.classList.add("hidden");
+}
+
+function setupChampionHero() {
+  if (!matches.length) return;
+  const champion = matches[0][8];
+  // Walk forward (older matches) until champion changes -> that's the reign start.
+  let reignStartIdx = 0;
+  for (let i = 0; i < matches.length; i++) {
+    if (matches[i][8] !== champion) break;
+    reignStartIdx = i;
+  }
+  const reignStartMatch = matches[reignStartIdx];
+  const startDateIso = reignStartMatch[1];
+  const days = startDateIso ? daysSince(startDateIso) : 0;
+  const crest = crestUrl(champion);
+
+  const crestHTML = crest
+    ? `<img src="${crest}" alt="${escapeHtml(champion)} crest">`
+    : initials(champion);
+  heroCrestEl.innerHTML = crestHTML;
+  if (!crest) heroCrestEl.classList.add("placeholder");
+  heroNameEl.textContent = champion;
+  heroDaysEl.textContent = days.toLocaleString();
+
+  if (startDateIso) {
+    const won = reignStartMatch; // [no, date, home, score, away, result, ...]
+    const opp = won[2] === champion ? won[4] : won[2];
+    heroSinceEl.innerHTML =
+      `Champion since <strong>${formatDateLong(startDateIso)}</strong> ` +
+      `(${escapeHtml(won[3])} vs ${escapeHtml(opp)})`;
+  }
+
+  miniCrestEl.innerHTML = crestHTML;
+  miniNameEl.textContent = champion;
+  miniDaysEl.textContent = days.toLocaleString();
+}
+
+function daysSince(iso) {
+  const [y, m, d] = iso.split("-").map(Number);
+  const start = Date.UTC(y, m - 1, d);
+  const now = Date.now();
+  return Math.max(0, Math.floor((now - start) / 86400000));
+}
+
+function formatDateLong(iso) {
+  const [y, m, d] = iso.split("-");
+  const months = ["January","February","March","April","May","June",
+                  "July","August","September","October","November","December"];
+  return `${Number(d)} ${months[Number(m)-1]} ${y}`;
+}
+
+function updateMiniChamp() {
+  // Show mini-champ once user has scrolled past the hero block.
+  const heroBottom = heroEl.offsetTop + heroEl.offsetHeight;
+  const threshold = heroBottom - 80; // start the swap a bit before hero is fully out
+  const past = window.scrollY > threshold;
+  miniEl.classList.toggle("visible", past);
+  miniEl.setAttribute("aria-hidden", past ? "false" : "true");
 }
 
 main().catch((e) => {
