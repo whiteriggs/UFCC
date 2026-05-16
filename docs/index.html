@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0d10" />
+  <title>UFCC — Unofficial Football Club Championship</title>
+  <link rel="stylesheet" href="app.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="dot"></span>
+      <h1>UFCC</h1>
+      <span class="sub">Unofficial Football Club Championship</span>
+    </div>
+    <div class="now" id="now"></div>
+  </header>
+
+  <main class="layout">
+    <section class="feed" id="feed" aria-label="Match lineage feed">
+      <div class="feed-spacer" id="feed-spacer"></div>
+      <div class="feed-content" id="feed-content"></div>
+    </section>
+
+    <aside class="timeline" id="timeline" aria-label="Year timeline">
+      <div class="timeline-track" id="timeline-track"></div>
+      <div class="timeline-thumb" id="timeline-thumb">
+        <span id="timeline-year">—</span>
+      </div>
+    </aside>
+  </main>
+
+  <div class="loading" id="loading">Loading lineage…</div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

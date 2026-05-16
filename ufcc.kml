@@ -1,0 +1,4399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>UFCC champions</name>
+    <description>Locations of all clubs who have been unofficial football club champions</description>
+    <Style id="icon-1899-0288D1-nodesc-normal">
+      <IconStyle>
+        <color>ffd18802</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-1899-0288D1-nodesc-highlight">
+      <IconStyle>
+        <color>ffd18802</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="icon-1899-0288D1-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1899-0288D1-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1899-0288D1-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Folder>
+      <name>Untitled layer</name>
+      <Placemark>
+        <name>Aston Villa</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.8847828,52.5091117,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Blackburn Rovers</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -2.4891799,53.7286169,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Everton</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -2.9663193,53.438787,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Burnley</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -2.2301736,53.7890244,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Preston North End</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -2.6884317,53.7722256,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Arsenal</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.108438,51.5548885,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sunderland</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.388371,54.914561,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sheffield United</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.4699284,53.3699684,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bolton Wanderers FC</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -2.5360804,53.5798449,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>West Bromwich Albion</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.9639101,52.5090903,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Liverpool</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -2.96083,53.4308294,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Manchester United</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -2.2913401,53.4630589,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Wolverhampton Wanderers</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -2.1304288,52.5902362,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Huddersfield Town</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.7682517,53.6542822,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Middlesbrough</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.2181654,54.5779685,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Birmingham City</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.8681114,52.4752273,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Derby County</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.4472151,52.9148277,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Newcastle United</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.621667,54.975556,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Chelsea</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.1909565,51.481663,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sheffield Wednesday</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.5009452,53.4113938,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Paris Saint-Germain FC
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            2.2530487,48.8414356,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>West Ham United</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.0166037,51.5387095,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Tottenham Hotspur</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.0662482,51.602875,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Manchester CIty</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -2.2003953,53.4831381,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bury</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -2.2948209,53.5805097,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Notts County</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.1365683,52.942028,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Stoke City</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -2.1762441,52.9881189,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC Basel</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.6200756,47.5415894,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Nottingham Forest</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.1334793,52.9394801,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Portsmouth</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.0637899,50.7963372,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Leicester City</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.1421895,52.6203662,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>AS Monaco FC
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.4157088,43.7276123,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>CE Palavas</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            3.9308316,43.5311627,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Grasshoppers</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            8.5038076,47.3826664,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>AJ Auxerre
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            3.5888128,47.7867977,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>AS Cannes
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            6.9640473,43.5530147,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC Kaiserslautern
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.77662,49.43532,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Millwall</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.0508872,51.4860107,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC Nantes</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.524675,47.2560233,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bristol City</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -2.620302,51.4401174,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Olympique de Marseilles
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            5.3958873,43.269827,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Toulouse FC</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            1.434048,43.5832972,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Blackpool</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -3.048122,53.8048772,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>AS Atlas Paillade
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            3.8120627,43.6221434,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Cardiff City</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -3.2030343,51.4728372,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>SV Hamburg</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            9.8986004,53.5871279,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC Girodins de Bordeaux
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.5615863,44.8973583,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[Queen's Park Rangers]]></name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.2321123,51.5092767,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Servette Geneve</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            6.1274623,46.1778419,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Nimes Olympique
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            4.3590809,43.8159501,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FK Vojvodina</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            19.8422313,45.2469124,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Wanderers</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.0902667,51.4428316,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC Barcelona</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            2.1228198,41.380896,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>AS Saint-Étienne</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            4.3903013,45.4607432,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Leeds United</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.5721446,53.7778162,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Old Etonians</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.5993554,51.4970561,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>RC Deportivo de la Coruna
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -8.4174835,43.3687184,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bradford City</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.7600124,53.8036712,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>SC Toulon</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            5.9019013,43.1267603,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FK 03 Pirmasens</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.6089468,49.2185408,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>AF Lozere</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            3.4743752,44.516003,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC Martigues
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            5.049135,43.4071018,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Charlton Athletic Football Club</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            0.0358471,51.4866871,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>BSC Young Boys
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.4648745,46.9631123,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC Metz</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            6.1596394,49.109764,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bayern Munich</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.6247072,48.2187997,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>1 FC SAARBRÜCKEN</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            6.9844511,49.2474691,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Borussia Dortmund</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.4518574,51.4925888,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>NK Rijeka</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            14.4022364,45.3478867,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Eintracht Frankfurt</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            8.645472,50.0685807,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Plymouth Argyle</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -4.1510375,50.3882518,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC Sochaux-Montbeliard
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            6.8111936,47.5125711,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>NK Junak Sinj
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            16.6539377,43.7028508,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>NK Neretva</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            17.6456738,43.0501605,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Red Star Belgrade</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            20.4647974,44.783058,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FK Sarajevo</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            18.4088103,43.8738313,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>RC Strasbourg Alsace
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.7551235,48.5600356,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pau FC</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.3169304,43.3096838,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>SR Colmar</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.3764292,48.0873964,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>SAS Epinal</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            6.4700922,48.1803752,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>ASM Belfort</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            6.8556339,47.6554033,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Reading</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.9826326,51.4223932,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>RC Celta de Vigo
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -8.7397514,42.2118719,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Luton Town</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.4307897,51.8836174,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>AS Nancy</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            6.2099476,48.6950264,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Stade Rennais FC
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.7128664,48.1074881,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>RC Lens</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            2.8150836,50.4328789,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Grimsby Town Football Club</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.046415,53.57015,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>SM Caen</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.3957295,49.1785494,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Port Vale</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -2.1926408,53.0495845,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>DSC Arminia Bielefeld
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            8.5161568,52.0314415,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>OC Perpignan</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            2.8775053,42.6873624,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>AS Perpignan Mediterranee
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            2.913469,42.691291,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Borussia Neunkirchen</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.18043,49.33616,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC St Gallen
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            9.3056332,47.4083269,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Southampton</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.3909515,50.9058395,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Dinamo Zagreb</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            16.0179744,45.8186015,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Westfalia Herne
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.20837,51.55091,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hertha BSC Berlin
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            13.2394987,52.5146971,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC Lausanne Sports
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            6.6239906,46.5330135,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Stade Brestois 29
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -4.4614694,48.4027262,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hull City</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.3676031,53.7462136,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>ASV Landau 1946
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            8.105545,49.1988184,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>SC Bastia
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            9.4427034,42.6514524,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Fulham</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.2217799,51.4748946,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bradford Park Avenue FC</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.776923,53.7586971,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Eintracht Trier</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            6.6479285,49.7682998,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FK Vardar</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            21.4256595,42.0058773,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC Radnički</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            21.9086611,43.3154722,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Crystal Palace Football Club</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.0854867,51.3982531,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Northampton Town Football Club</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.9337269,52.2350156,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Fortuna Dusseldorf</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            6.7331902,51.2615824,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Neuchatel Xamax</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            6.9443827,46.9952659,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Swindon Town Football Club</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.7720571,51.5644303,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kettering Town Football Club</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.6901217,52.3667168,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Real Zaragoza
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.9016464,41.6364704,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC Cologne
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            6.8751545,50.9334609,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>UJA Alfortville</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            2.4233437,48.7592392,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Jerez CF
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -6.7600425,38.3268318,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>HNK Val Kaštel Stari
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            16.3464365,43.5532015,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Stade Lavallois Mayenne FC
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.754669,48.0823174,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Racing Club Strasbourg B
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.7551235,48.5600356,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC Sete 34</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            3.67,43.4127778,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>RCD Mallorca
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            2.63005,39.589952,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hajduk Split
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            16.4318567,43.5196129,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FK Zeljeznicar Sarajevo
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            18.3872419,43.8467439,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Real Racing Club de Santander
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -3.7932738,43.4762857,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Slavia Prague</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            14.4715123,50.0674643,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Fortuna Koln
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            6.943283,50.9175324,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>NK Solin</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            16.4930627,43.5382678,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rayo Vallecano de Madrid CAD
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -3.6587075,40.392062,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>La Clermontaise
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            3.4310775,43.632662,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>NK DOŠK Drniš
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            16.1575486,43.8609094,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>USL Dunkerque
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            2.3896813,51.0351538,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC Montceau Bourgogne
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            3.0846234,50.6216192,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>AS Frontignan AC
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            3.7617693,43.442756,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Jura Sud Football</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            5.7648486,46.3558137,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Partizan Belgrade</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            20.459083,44.7884269,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Oldham Athletic</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -2.1284559,53.555147,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Newport County</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -2.9651553,51.5837136,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Watford</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.401525,51.6499059,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Lille OSC</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            3.1304899,50.6119667,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Barnsley Football Club</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.468189,53.551742,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Clapham Rovers</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.169008,51.4531647,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>NK Zagreb</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            15.9600938,45.8052267,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Slaven Trogir
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            16.2751323,43.5514714,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Dundee United</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -2.9690001,56.4747082,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Paris FC</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            2.3466763,48.8184909,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sportfreunde 05 Saarbrücken</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            6.932872,49.2416391,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Merida UD
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -6.3371234,38.914301,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Oxford University</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.2445933,51.745582,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>UD Almeria
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -2.4354156,36.8400273,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>AS Beziers
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            3.267164,43.3348206,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>US Orleans
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            1.9416618,47.8406445,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>RCD Espanyol
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            2.0747653,41.3479735,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>SV Niederlahnstein
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.5949752,50.3121704,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sevilla FC
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -5.9706902,37.3840655,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Southend United</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            0.7015519,51.5488506,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Real Sociedad
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.973682,43.3013934,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Eintracht Braunschweig
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            10.5206206,52.2900556,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Brentford</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.3027205,51.4880174,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>OGC Nice
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.1928457,43.7053308,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bristol Rovers
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -2.5831413,51.4862276,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Blackburn Olympic</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -2.4868302,53.7602589,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>AS Marck</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            1.9290776,50.9561507,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Old Carthusians</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.6219691,51.1966247,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Royal Engineers</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            0.533715,51.3922538,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>ESTAC Troyes B
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            4.0984348,48.3075473,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Valencia CF Mestalla
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.4549173,39.5427349,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>AC Sparta Prague
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            14.4159181,50.0998302,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC Barcelona B
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            2.0509364,41.3740491,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Gazelec FC Ajaccio
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            8.772053,41.9513138,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>NK Celik Zenica
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            17.907304,44.2058968,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>HNK Sibenik
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            15.8965193,43.7436061,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>AS Roma</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            12.454725,41.934077,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Football Bourg-en-Bresse
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            4.0559983,46.595114,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Deportivo Alaves
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -2.6888942,42.8376967,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rotherham United</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.3630214,53.4270248,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Cadiz CF
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -6.2729285,36.502601,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Phonix Ludwigshafen
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            8.4416967,49.4683738,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Union Sportive de Valenciennes Anzin
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            3.5317617,50.3484216,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>CSO Amnéville</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            6.1323718,49.2568337,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Swansea City</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -3.9345855,51.6427499,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC Sion
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.3759112,46.2333508,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Accrington</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -2.3608676,53.7613929,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Leyton Orient</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.0127137,51.5601908,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Walsall FC</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.9898444,52.5651709,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>NK Bagat Zadar
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            15.2468138,44.1120859,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC Germania Metternich 1912 e. V.</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.5547501,50.3674212,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Juventus FC
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.6412644,45.109569,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FCSR Haguenau B
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.7784507,48.816416,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>SG Union Sollingen
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            6.986983,51.160315,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>AS Canet
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            3.0022476,42.7071582,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>AFC Bournemouth
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.8382791,50.7352306,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Avenir Sportif Rousson
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            4.1497719,44.183867,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Chamois Niortais FC
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.4899273,46.3171075,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>AS Pierrots Vauban Strasbourg
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.7799772,48.5792421,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Werder Bremen
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            8.8376051,53.0664328,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>AS Monaco B
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.4157088,43.7276123,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Narbonne Football
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            3.0176348,43.1813236,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Dos Hermanas CF</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -5.9237524,37.2917254,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Wacker 04 Berlin
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            13.3120001,52.57491,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Villareal CF
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.1035413,39.9437413,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Spandauer SV
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            13.2062546,52.5538439,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>AS Nancy B
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            6.2099476,48.6950264,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[US Raon-l'Etape
+]]></name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            6.8316722,48.4022121,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Castelnau Le Cres F.c.</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            3.9048935,43.6292565,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>NK Troglav 1918 Livno
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            17.0043313,43.8194245,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Tours FC</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            0.7281537,47.3760663,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>RNK Split</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            16.444199,43.5191626,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Norwich City</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            1.3093062,52.6221535,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Racing Club de France
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            2.2477717,48.9292771,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>US Quevilly-Rouen Metropole
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            1.0707877,49.4108435,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ipswich Town</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            1.1450714,52.0549761,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>RC Lens B</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            2.8150836,50.4328789,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FK Spartak Subotica
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            19.6768147,46.081791,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>NK Osijek
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            18.6955712,45.544991,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>TuRa Ludwigshafen
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            8.4167801,49.4794177,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC St Pauli</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            9.9677413,53.5545338,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Besancon Football Club</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            6.015594,47.259165,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Jugovinil Kaštel Gomilica
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            16.4015945,43.5503631,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bayer Leverkusen
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.0022566,51.0382091,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC Villefranche
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            4.7088653,46.0000763,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>US Sarre-Union
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.0952577,48.934895,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FSV Schifferstadt
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            8.3804667,49.3705937,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Alemannia Aachen
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            6.0982721,50.793209,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FK Novi Sad</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            19.8138664,45.2669732,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FVgg Mombach
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            8.2236781,50.0144019,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>JSBCA Nimes
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            4.3777535,43.8462144,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>NK Varteks Varazdin
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            16.3444376,46.2934449,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Tennis Borussia Berlin
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            13.2638805,52.5003152,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Unio Esportiva Lleida
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            0.6142732,41.6212978,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FK Proleter Zrenjanin
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            19.8421991,45.2468973,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Exeter City Football Club</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -3.5210652,50.7307335,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Etoile Carouge FC
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            6.1502534,46.185918,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC Briolet</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -2.128692,47.6454809,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC Dinamo Tblisi
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            44.789803,41.7230272,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>AC Ajaccio
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            8.7769926,41.9311432,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>ES Paulhan Pezenas
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            3.423193,43.461531,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>US Turcs Bischwiller
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.867335,48.76586,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>AJ Auxerre B
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            3.5888128,47.7867977,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>AS Lyon-Duchere
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            4.7967415,45.7870311,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>US Reipertswiller
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.46392,48.933292,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>VfR Frankenthal
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            8.3685963,49.5369588,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>NK Omis
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            16.6848421,43.4416401,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FK Velez Mostar
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            17.8544093,43.3783444,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[Brighton & Hove Albion
+]]></name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.0837163,50.8615651,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Coventry City
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.4967264,52.4487254,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>AS Beauvais Oise
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            2.1143902,49.4305945,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>SV St Ingbert
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.1208076,49.2653293,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC Sochaux B
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            6.8111936,47.5125711,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Real Valladolid
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -4.7612219,41.6445972,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>NK Dinara Knin
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            16.1964988,44.0407757,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Aldershot</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.75602,51.2482554,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Chesterfield Football Club</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.4259688,53.2535595,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FK Sloboda Tuzla
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            18.661445,44.5418275,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FCO Dijon   
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            5.0683285,47.3243816,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Doncaster Rovers
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.1147467,53.5100517,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Athletic Club de Bilbao
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -2.9493272,43.2641294,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>HNK Jadran Kaštel Sućurac
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            16.4209107,43.54555,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>NK Omladinac Vranjic
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            16.4726605,43.5308837,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rot Weiss Ludenscheid
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.6188293,51.2078895,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Gillingham</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            0.560913,51.384162,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC Schalke 04
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.0675262,51.5546309,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Canet Roussillon B
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            3.0022476,42.7071582,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Berliner FC Dynamo
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            13.4084918,52.5435637,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Olympique Lyonnais B
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            4.982029,45.765295,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>ES Uzes
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            4.4170298,44.0159257,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rot Weiss Oberhausen
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            6.8552778,51.4938889,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>NK Olimpija Ljubljana
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            14.5242929,46.0805141,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rot Weiss Essen
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            6.9766241,51.4868654,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Motril CF
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -3.5124701,36.7541035,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[Monts d'Or Azergues Chasselay
+]]></name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            4.7699899,45.8807326,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Club Gimnastic de Tarragona
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            1.272851,41.127051,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>SC Selongey
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            5.186164,47.587414,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>CD San Fernando
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -6.2074303,36.4701273,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>NK Radnik Velika Gorica
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            16.0731389,45.723958,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>AC Milan</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            9.123962,45.4781236,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Evian Thonon Gaillard FC
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            6.1181671,45.9165122,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>AD Ceuta FC
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -5.3279087,35.8854565,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sociedad Deportiva Compostela
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -8.516072,42.8827514,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC Dinamo Bucharest
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            26.1023613,44.4550418,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>OFK Kikinda
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            20.4564299,45.8383424,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>NK Dinamo Vinkovci
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            18.7972893,45.283665,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>UD Melilla
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -2.9495488,35.2851096,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[Queen's Park, Glasgow
+]]></name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -4.2553997,55.8255017,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC Limonest Saint-Didier
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            4.7734763,45.83544,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>AEC St-Gilles
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            4.433703,43.677079,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>VfL Osnabruck
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            8.0713295,52.2808091,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>AS Beziers B
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            3.267164,43.3348206,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Alicante CF
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.4906855,38.3459963,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>NK Merkator Ljubljana
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            14.4870333,46.039383,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>CF Ciudad de Murcia
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.1213617,37.9862099,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Berliner SV 92
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            13.3025,52.4838889,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC Lugano
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            8.9607986,46.0241282,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Talavera CF
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -4.8219313,39.9655147,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Viktoria 89 Berlin
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            13.3239762,52.4392941,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Torquay United Football Club</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -3.5246731,50.4764203,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>VfR Baumholder e.V.</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.3418818,49.6124532,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>NK Orkan Dugi Rat
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            16.6447491,43.4453599,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Croydon Common</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.0876478,51.3917816,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>UD Las Palmas
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -15.4567456,28.1004063,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Spartak Moscow</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            37.4405993,55.8178196,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rodez AF
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            2.5636029,44.3515659,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>TREBES FOOTBALL CLUB</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            2.444689,43.208986,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>NK Jedinstvo Bihac
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            15.8639055,44.8067803,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Tranmere Rovers Football Club</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -3.0334399,53.3735733,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Burgos CF
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -3.6805223,42.3444259,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>GOSK Jug
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            18.0790604,42.654658,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Entente St Clement Montferrier
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            3.8579419,43.6730769,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>VfR Wormatia Worms
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            8.3350582,49.6312714,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>NK Zadar
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            15.2468904,44.1129301,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Wuppertaler SV
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.1048263,51.2392133,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC Kaiserslautern Amateure
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.7768069,49.4341714,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Carcassonne
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            2.3644383,43.2178143,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>vNK Omladinac Zadar
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            15.2462493,44.1136448,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC Istres
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            4.9489821,43.4687854,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bayer Uerdingen
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            6.6037463,51.3389189,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC Mulhouse   
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.3206952,47.7382571,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Granada CF
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -3.5957386,37.1529356,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>SV Saar 05 Saarbrucken
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.0244411,49.2341873,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC Winterthur
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            8.7174911,47.5007768,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC La Chaux-de-Fonds
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            6.8364754,47.1125401,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>HNK Velebit Benkovac
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            15.2291667,44.5308333,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Poli Ejido 2012 Sociedad Deportiva
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -3.8404714,40.3388592,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC Dahn 1913
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.7820727,49.1537096,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Renton</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -4.5846269,55.970846,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>NK Mura Murska Sobota
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            16.1577732,46.6686854,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FK Jedinstvo Brcko
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            18.7970069,44.8806678,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Palamos CF
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            3.1213914,41.8534739,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>IFK Norrkoping
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            16.1716667,58.5844444,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>1 FC 03 Sobernheim
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.6515499,49.7857614,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Le Puy Foot 43 Auvergne
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            3.873882,45.046465,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Albacete Balompie
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.8524729,38.9809171,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>MJC Gruissan
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            3.108041,43.1171945,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>NK Istra Pula
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            13.8516815,44.8616486,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FK Teteks Tetovo
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            20.9780467,42.0185635,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>OGC Nice B
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.19514,43.6836859,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>CD Longrones
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -2.4518262,42.4559462,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>ASC Bas-Vernet
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            2.8820162,42.7045305,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FK Galenika Zemun
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            20.397985,44.8479514,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>VfB Theley
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.0156712,49.5044707,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Stade Montois
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.5012177,43.9004208,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>US Conques
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            3.8294061,43.6136999,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FK Leotar
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            18.3528743,42.7086398,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Frejus St Raphael
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            6.8073008,43.4298645,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Phoenix Bellheim
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            8.2744859,49.1982228,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>SV Sodingen
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.2009147,51.5368948,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>La Grand Motte
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            4.086072,43.560704,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Real Oviedo
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -5.8702446,43.3607701,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Montpelier Herault SC B
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            3.8120627,43.6221434,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Wellingborough Town
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.682172,52.2938771,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>NK Maribor
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            15.6406021,46.5629569,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC Bagnols Pont
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            2.4012151,48.8322381,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Club Athletico de Madrid
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -3.5994674,40.4361939,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Swifts</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.5883,51.5198478,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC St-Louis Neuweg
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.573833,47.5795497,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FK Borac Banja Luka
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            17.1995594,44.7760279,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Stade Balarucois
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            3.6747876,43.4412888,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Great Marlow</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.7735291,51.5774473,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Borussia Moenchengladbach
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            6.3855055,51.1745698,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>DSC Wanner-Eickel
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.1711634,51.5218015,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Old Forresters
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            0.1026916,51.6001305,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[L'Entente SSG
+]]></name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            2.2739024,48.9753342,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FK Buducnost Podgorica
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            19.2644811,42.444723,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[Gallia C d'Uchaud
+]]></name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            4.2710161,43.7587424,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Le Havre AC
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            0.1692945,49.4993417,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>TuS Neuendorf
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.5866138,50.3304925,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC Grenchen
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            6.8760436,50.832886,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Lincoln City</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.5408125,53.2181795,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>SO Cassis Carnoux
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            5.53712,43.215134,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Eintacht Bad Kreuznach
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.8695476,49.8529247,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Red Star FC 93
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            2.3411319,48.9063672,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>RNK Zmaj Makarska
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            17.0212153,43.2907574,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>US Creteil-Lusitanos
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            2.4607963,48.7678066,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ludwigshafener SC
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            8.4051289,49.5001482,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Preussen Munster
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.6250511,51.9299196,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FC Biel-Bienne
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.2809989,47.1559785,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>NK Metalac Sibenik
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            15.8952045,43.7350196,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>BSC Oppau
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            8.3963386,49.5242674,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>1. FC Nuremberg
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.1257077,49.4262526,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>SV Weisenau
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            8.2939254,49.9758648,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Glossop North End AFC</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.9570242,53.445789,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>CS Chenois
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            6.1907047,46.1918152,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>TSG 1899 Hoffenheim</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            8.8879801,49.2380385,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>1. FSV Mainz 05</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            8.2243816,49.9839442,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>VfB Stuttgart</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            9.2320752,48.7923171,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Tasmania 1900 Berlin</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            13.4190501,52.4683639,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>VfL Bochum</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.2353537,51.4901833,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ferencvárosi TC</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            19.0952108,47.4754369,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Debreceni VSC</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            21.6335964,47.5541414,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Mezőkövesd Zsóry Football Club Ltd.</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            20.5673199,47.8031811,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Újpest FC</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            19.0842712,47.5757235,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Budapest Honved FC</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            19.155114,47.4424727,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Zalaegerszegi TE</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            16.8482993,46.8483048,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Paksi FC</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            18.8523669,46.6338664,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>MTK Budapest</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            19.1073632,47.4907987,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Diosgyori VTK</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            20.7175509,48.0996829,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Szeged-Csanád Grosics Akadémia</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            20.1182266,46.2615132,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Mosonmagyaróvári TE</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            17.2759664,47.8854089,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kisvarda FC</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            22.0720938,48.2316979,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>RB Leipzig</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            12.3482689,51.3457824,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Holstein Kiel</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            10.1243601,54.3487663,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Real Madrid CF</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -3.6883337,40.4530387,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Valencia CF</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.3585902,39.4746556,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Galatasaray SK</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            28.991243,41.103203,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Trabzonspor</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            39.6459477,40.998521,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Real Betis Balompie</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -5.9817117,37.3564922,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Cordoba CF</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -4.7644367,37.8721706,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Fenerbahce SK</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            29.0368903,40.9876722,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Real Sociedad B</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.9735868,43.3013668,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>RCD Mallorca B</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            2.6656162,39.6434288,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Real Murcia</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.1213617,37.9862099,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>UE Figueres</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            2.999067,42.2695503,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Xerez CD</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -6.1205197,36.6893456,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>UD Logrones</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -2.45337,42.4532029,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Montpellier Hérault Sport Club</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            3.9306819,43.6128003,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>C.D. Leganés</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -3.7600909,40.34041,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>SD Compostela</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -8.5169478,42.882546,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>MSV Duisburg</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            6.7871167,51.4656373,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ciudad Deportiva Getafe CF</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -3.7112184,40.3245309,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sevilla Atletico (B)</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -5.9470054,37.3523162,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>CD Castellón</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.0391855,39.9955813,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Elche CF</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.6749993,38.2734678,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Beşiktaş JK</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            28.993458,41.0405874,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>CD Badajoz</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -7.0069306,38.8589415,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Real Sporting de Gijón</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -5.6623136,43.5435446,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rouen Football Club 1899</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            1.0700254,49.4113464,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>CA Osasuna</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -1.6373666,42.7963104,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Wimbledon</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.1867629,51.4305955,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Boluspor Kulubu</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            31.6066875,40.722702,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Aydınspor 1923</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            27.8518998,37.8558667,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[CE L'Hospitalet]]></name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            2.1037555,41.3793415,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>SD Eibar</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -2.4749368,43.1818535,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Terrassa Futbol Club</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            2.0104646,41.5762901,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Altay S.K. Tesisleri</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            27.137658,38.315247,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>SG Wattenscheid 09</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            7.1374753,51.4798786,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hercules de Alicante C.F. S.A.D.</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.4933081,38.3578823,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>CD Tenerife</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -16.2598952,28.4626967,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>SK Sigma Olomouc</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            17.2475637,49.6003422,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>ENDESA Charging Station</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.436982,40.974809,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>SG Dynamo Dresden e.V.</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            13.7460315,51.0409277,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sarıyer Sports Club Facilities</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            29.049346,41.171643,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>UP Plasencia
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -6.091521,40.0473362,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Real Betis B</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -5.9819407,37.351344,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>CD Cala Millor
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            3.3792817,39.6000903,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Moralo CP</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -5.5429892,39.8979014,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bakirkoy SK
+</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            28.7917275,40.980154,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>CD Lugo</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -7.5709638,43.0032743,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Karşıyaka Spor Kulübü</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            27.1103828,38.4507,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Olympique Lyonnais</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            4.8321401,45.723699,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Genclerbirligi Sports Club</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            32.8142128,39.93428,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Atalanta B.C.</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            9.6811696,45.7088421,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>ACF Fiorentina</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.2831361,43.7815577,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Como 1907</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            9.0732726,45.8133601,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>SSC Napoli</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            14.1930611,40.8279365,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Untitled layer</name>
+    </Folder>
+  </Document>
+</kml>
