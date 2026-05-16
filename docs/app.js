@@ -219,9 +219,7 @@ async function main() {
   window.addEventListener("scroll", scheduleRender, { passive: true });
   window.addEventListener("resize", scheduleRender);
   window.addEventListener("scroll", updateMiniChamp, { passive: true });
-  miniEl.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
+  miniEl.addEventListener("click", scrollToTopSmooth);
   updateMiniChamp();
   renderVisible();
 
@@ -284,6 +282,28 @@ function updateMiniChamp() {
   const past = window.scrollY > threshold;
   miniEl.classList.toggle("visible", past);
   miniEl.setAttribute("aria-hidden", past ? "false" : "true");
+}
+
+function scrollToTopSmooth(e) {
+  if (e) { e.preventDefault(); e.stopPropagation(); }
+  const start = window.scrollY || document.documentElement.scrollTop || 0;
+  if (start <= 0) return;
+  // Try native smooth scroll first.
+  try {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  } catch (_) { /* old browsers */ }
+  // Manual rAF fallback in case the browser ignored 'smooth' or to guarantee
+  // we actually reach 0 (some embedded webviews stop midway).
+  const duration = 450;
+  const t0 = performance.now();
+  const ease = (t) => 1 - Math.pow(1 - t, 3);
+  function step(now) {
+    const k = Math.min(1, (now - t0) / duration);
+    const y = start * (1 - ease(k));
+    window.scrollTo(0, y);
+    if (k < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
 }
 
 main().catch((e) => {
