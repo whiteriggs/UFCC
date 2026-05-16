@@ -404,16 +404,18 @@ html, body {
 .topbar-toggle:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
 .app-shell {
-  display: grid;
-  grid-template-columns: 60px 1fr;
+  display: block;
   min-height: calc(100vh - 49px);
+  padding-left: 60px;
 }
-body.sidebar-collapsed .app-shell { grid-template-columns: 0 1fr; }
+body.sidebar-collapsed .app-shell { padding-left: 0; }
 body.sidebar-collapsed .activity-bar { transform: translateX(-100%); }
 
 .activity-bar {
-  position: sticky;
+  position: fixed;
   top: 49px;
+  left: 0;
+  width: 60px;
   height: calc(100vh - 49px);
   background: var(--bg-2);
   border-right: 1px solid var(--line);
@@ -423,9 +425,10 @@ body.sidebar-collapsed .activity-bar { transform: translateX(-100%); }
   padding: 8px 0;
   gap: 2px;
   z-index: 20;
-  transition: transform 200ms ease;
+  transition: transform 200ms ease, padding 200ms ease;
   overflow-y: auto;
   overflow-x: hidden;
+  box-sizing: border-box;
 }
 .ab-btn {
   appearance: none;
@@ -735,12 +738,15 @@ body.sidebar-collapsed .activity-bar { transform: translateX(-100%); }
 /* ---------- Mobile activity bar (top horizontal) ---------- */
 @media (max-width: 700px) {
   .app-shell {
-    grid-template-columns: 1fr;
+    padding-left: 0;
+    padding-top: 0;
   }
-  body.sidebar-collapsed .app-shell { grid-template-columns: 1fr; }
+  body.sidebar-collapsed .app-shell { padding-left: 0; padding-top: 0; }
   .activity-bar {
     position: sticky;
     top: 49px;
+    left: auto;
+    width: 100%;
     height: auto;
     flex-direction: row;
     overflow-x: auto;
@@ -748,6 +754,7 @@ body.sidebar-collapsed .activity-bar { transform: translateX(-100%); }
     border-right: none;
     border-bottom: 1px solid var(--line);
     padding: 4px;
+    transform: none;
     transition: max-height 200ms ease, padding 200ms ease;
   }
   body.sidebar-collapsed .activity-bar {
