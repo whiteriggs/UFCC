@@ -219,6 +219,9 @@ async function main() {
   window.addEventListener("scroll", scheduleRender, { passive: true });
   window.addEventListener("resize", scheduleRender);
   window.addEventListener("scroll", updateMiniChamp, { passive: true });
+  miniEl.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
   updateMiniChamp();
   renderVisible();
 

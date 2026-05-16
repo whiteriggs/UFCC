@@ -54,11 +54,21 @@ html, body {
   gap: 10px;
   opacity: 0;
   transform: translateY(-4px);
-  transition: opacity 180ms ease, transform 180ms ease;
+  transition: opacity 180ms ease, transform 180ms ease, background-color 120ms ease;
   pointer-events: none;
   max-width: 60%;
   min-width: 0;
+  background: transparent;
+  border: 1px solid transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  padding: 4px 8px;
+  border-radius: 8px;
+  cursor: pointer;
 }
+.mini-champ:hover { background: var(--bg-3); border-color: var(--line); }
+.mini-champ:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 .mini-champ.visible { opacity: 1; transform: none; pointer-events: auto; }
 .mini-crest {
   width: 28px; height: 28px;
