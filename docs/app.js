@@ -220,6 +220,9 @@ async function main() {
   window.addEventListener("resize", scheduleRender);
   window.addEventListener("scroll", updateMiniChamp, { passive: true });
   miniEl.addEventListener("click", scrollToTopSmooth);
+  // Some webviews swallow click on transformed/animated buttons; pointerup is
+  // a reliable backup that fires before any default click handling.
+  miniEl.addEventListener("pointerup", scrollToTopSmooth);
   updateMiniChamp();
   renderVisible();
 
