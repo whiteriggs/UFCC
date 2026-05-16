@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import sqlite3
 import sys
 import time
@@ -26,10 +27,12 @@ from pathlib import Path
 
 DB_PATH = Path("ufcc.db")
 TEAM_MAP_PATH = Path("data/api_team_map.json")
+CRESTS_DIR = Path("crests")
 API_BASE = "https://api.football-data.org/v4"
 API_KEY = os.environ.get("FOOTBALL_DATA_KEY", "").strip()
 MAX_CHAMPION_SWAPS = 10
 TIMEOUT = 30
+USER_AGENT = "ufcc-updater/1.0 (+personal project)"
 
 FREE_TIER_COMPETITIONS = [
     "PD",   # La Liga
@@ -113,6 +116,60 @@ def resolve_team_id(name: str, team_map: dict[str, int]) -> int | None:
         time.sleep(6)  # 10 req/min en free
     print(f"  · WARN: '{name}' no está en ninguna competición del free tier")
     return None
+
+
+# ---------------------- Crest download ----------------------
+
+def _safe_filename(url: str) -> str:
+    path = urllib.parse.urlparse(url).path
+    name = path.rsplit("/", 1)[-1] or "crest"
+    return re.sub(r"[^A-Za-z0-9._-]+", "_", name)
+
+
+def _download(url: str, dest: Path) -> bool:
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+        with urllib.request.urlopen(req, timeout=20) as resp:
+            data = resp.read()
+        if not data:
+            return False
+        dest.write_bytes(data)
+        return True
+    except Exception as exc:
+        print(f"  · WARN crest download failed {url}: {exc}")
+        return False
+
+
+def upsert_club(con: sqlite3.Connection, name: str, crest_url: str | None) -> None:
+    """Asegura que el club existe en `clubs` y descarga su crest si falta."""
+    cur = con.cursor()
+    cur.execute("SELECT crest_url, crest_path FROM clubs WHERE name = ?", (name,))
+    row = cur.fetchone()
+    crest_path: str | None = None
+    if crest_url:
+        CRESTS_DIR.mkdir(exist_ok=True)
+        fname = _safe_filename(crest_url)
+        dest = CRESTS_DIR / fname
+        if dest.exists() and dest.stat().st_size > 0:
+            crest_path = str(dest)
+        elif _download(crest_url, dest):
+            crest_path = str(dest)
+            print(f"  · crest descargado: {name} → {fname}")
+    if row is None:
+        cur.execute(
+            "INSERT INTO clubs (name, crest_url, crest_path) VALUES (?, ?, ?)",
+            (name, crest_url, crest_path),
+        )
+        print(f"  · club nuevo en BD: {name}")
+    else:
+        existing_url, existing_path = row
+        new_url = crest_url or existing_url
+        new_path = crest_path or existing_path
+        if new_url != existing_url or new_path != existing_path:
+            cur.execute(
+                "UPDATE clubs SET crest_url = ?, crest_path = ? WHERE name = ?",
+                (new_url, new_path, name),
+            )
 
 
 # ---------------------- DB helpers ----------------------
@@ -223,6 +280,8 @@ def fetch_finished_matches(team_id: int, since_iso: str) -> list[dict]:
 def match_to_row(m: dict, champion: str) -> dict:
     home = m["homeTeam"]["name"]
     away = m["awayTeam"]["name"]
+    home_crest = m["homeTeam"].get("crest")
+    away_crest = m["awayTeam"].get("crest")
     full = m["score"].get("fullTime") or {}
     hg = full.get("home") or 0
     ag = full.get("away") or 0
@@ -240,6 +299,8 @@ def match_to_row(m: dict, champion: str) -> dict:
     return {
         "home": home,
         "away": away,
+        "home_crest": home_crest,
+        "away_crest": away_crest,
         "home_goals": hg,
         "away_goals": ag,
         "result": result,
@@ -301,6 +362,8 @@ def run() -> int:
                     champion_after=row["winner"],
                     source_url=row["source_url"],
                 )
+                upsert_club(con, row["home"], row["home_crest"])
+                upsert_club(con, row["away"], row["away_crest"])
                 con.commit()
                 total_added += 1
                 print(
