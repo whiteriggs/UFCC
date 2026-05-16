@@ -26,7 +26,7 @@ jobs:
 
       - name: Run API update
         env:
-          API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
+          FOOTBALL_DATA_KEY: ${{ secrets.FOOTBALL_DATA_KEY }}
         run: python update_from_api.py
 
       - name: Re-export web data
