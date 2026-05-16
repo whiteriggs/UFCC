@@ -2,8 +2,10 @@ name: Update champion (daily)
 
 on:
   schedule:
-    # 07:00 UTC = 09:00 Madrid en horario de verano. A diario.
-    - cron: "0 7 * * *"
+    # 00:00 Madrid (CEST = UTC+2 en verano, CET = UTC+1 en invierno).
+    # Lanzamos ambas para cubrir todo el año sin tocar el cron.
+    - cron: "0 22 * * *"  # 00:00 Madrid en verano (CEST)
+    - cron: "0 23 * * *"  # 00:00 Madrid en invierno (CET)
   workflow_dispatch:
 
 permissions:
