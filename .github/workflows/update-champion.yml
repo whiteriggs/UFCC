@@ -1,11 +1,12 @@
-name: Update champion (daily)
+name: Update champion
 
 on:
   schedule:
-    # 00:00 Madrid (CEST = UTC+2 en verano, CET = UTC+1 en invierno).
-    # Lanzamos ambas para cubrir todo el año sin tocar el cron.
-    - cron: "0 22 * * *"  # 00:00 Madrid en verano (CEST)
-    - cron: "0 23 * * *"  # 00:00 Madrid en invierno (CET)
+    # Cada hora. football-data.org free permite 10 req/min, así que
+    # incluso con varios cambios encadenados de campeón vamos sobrados.
+    # El workflow no commitea si no hay cambios reales, así que el ruido
+    # en el historial se limita a los días con actividad.
+    - cron: "5 * * * *"
   workflow_dispatch:
 
 permissions:

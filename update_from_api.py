@@ -261,7 +261,10 @@ def insert_match_and_update_reign(
 
 def fetch_finished_matches(team_id: int, since_iso: str) -> list[dict]:
     today = date.today()
-    since = date.fromisoformat(since_iso) + timedelta(days=1)
+    # OJO: arrancamos en el mismo día del último partido para no perdernos un
+    # segundo encuentro del campeón en la misma jornada. El chequeo de
+    # duplicados (date_iso + home + away) ya impide insertar dos veces.
+    since = date.fromisoformat(since_iso)
     if since > today:
         return []
     data = api_get(
