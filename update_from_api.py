@@ -464,28 +464,53 @@ def run() -> int:
         print(f"Total partidos añadidos: {total_added}")
 
         # Próximo partido del campeón vigente.
-        champion, _, _ = current_champion_state(con)
-        team_id = resolve_team_id(champion, team_map)
+        # Cuidado: si el partido anterior aún está dentro de su ventana de
+        # polling (kickoff … kickoff+6h) y no hemos añadido ningún partido
+        # nuevo, NO sobrescribimos next_match.json. Si lo hiciéramos, el
+        # próximo run cargaría el siguiente fixture (varios días después)
+        # y should_skip_run() saltaría hasta el chequeo horario, perdiendo
+        # la actualización rápida del resultado.
         next_path = Path("docs/data/next_match.json")
         next_path.parent.mkdir(parents=True, exist_ok=True)
-        payload: dict | None = None
-        if team_id is not None:
+        preserve_existing = False
+        if total_added == 0 and next_path.exists():
             try:
-                m = fetch_next_scheduled_match(team_id)
-                if m:
-                    payload = scheduled_to_payload(m, champion)
-                    print(
-                        f"Próximo partido: {payload['kickoff_utc']} "
-                        f"{payload['home']} vs {payload['away']} ({payload['competition']})"
+                existing = json.loads(next_path.read_text(encoding="utf-8"))
+                if existing and existing.get("kickoff_utc"):
+                    prev_kickoff = datetime.fromisoformat(
+                        existing["kickoff_utc"].replace("Z", "+00:00")
                     )
-                else:
-                    print("Próximo partido: ninguno en los próximos 120 días.")
-            except Exception as e:
-                print(f"No se pudo obtener próximo partido: {e}")
-        next_path.write_text(
-            json.dumps(payload, ensure_ascii=False, indent=2) if payload else "null",
-            encoding="utf-8",
-        )
+                    now_utc = datetime.now(timezone.utc)
+                    if prev_kickoff <= now_utc <= prev_kickoff + timedelta(hours=6):
+                        preserve_existing = True
+                        print(
+                            "Mantengo next_match.json: aún en ventana del partido anterior "
+                            f"({existing.get('home')} vs {existing.get('away')})."
+                        )
+            except Exception:
+                pass
+
+        if not preserve_existing:
+            champion, _, _ = current_champion_state(con)
+            team_id = resolve_team_id(champion, team_map)
+            payload: dict | None = None
+            if team_id is not None:
+                try:
+                    m = fetch_next_scheduled_match(team_id)
+                    if m:
+                        payload = scheduled_to_payload(m, champion)
+                        print(
+                            f"Próximo partido: {payload['kickoff_utc']} "
+                            f"{payload['home']} vs {payload['away']} ({payload['competition']})"
+                        )
+                    else:
+                        print("Próximo partido: ninguno en los próximos 120 días.")
+                except Exception as e:
+                    print(f"No se pudo obtener próximo partido: {e}")
+            next_path.write_text(
+                json.dumps(payload, ensure_ascii=False, indent=2) if payload else "null",
+                encoding="utf-8",
+            )
 
         return 0
     finally:
