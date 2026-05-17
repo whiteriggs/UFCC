@@ -1,13 +1,13 @@
 {
   "champion": "Valencia CF",
-  "kickoff_utc": "2026-05-17T17:00:00Z",
-  "home": "Real Sociedad de Fútbol",
-  "away": "Valencia CF",
-  "home_crest": "https://crests.football-data.org/92.png",
-  "away_crest": "https://crests.football-data.org/95.png",
+  "kickoff_utc": "2026-05-23T19:00:00Z",
+  "home": "Valencia CF",
+  "away": "FC Barcelona",
+  "home_crest": "https://crests.football-data.org/95.png",
+  "away_crest": "https://crests.football-data.org/81.png",
   "competition": "Primera Division",
   "venue": "",
-  "is_home": false,
-  "opponent": "Real Sociedad de Fútbol",
-  "opponent_crest": "https://crests.football-data.org/92.png"
+  "is_home": true,
+  "opponent": "FC Barcelona",
+  "opponent_crest": "https://crests.football-data.org/81.png"
 }
