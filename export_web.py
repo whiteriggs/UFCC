@@ -317,7 +317,10 @@ def main() -> None:
                 "reigns": per_club_reigns[club],
                 "crest": clubs.get(club),
             }
-            for club in sorted(per_club_days, key=lambda c: -per_club_days[c])
+            for club in sorted(
+                per_club_matches,
+                key=lambda c: (-per_club_matches[c], -per_club_days[c]),
+            )
         ]
 
         # 5b) Reinados individuales más largos.
@@ -336,7 +339,7 @@ def main() -> None:
                 "is_current": idx == last_reign_idx,
                 "crest": clubs.get(club),
             })
-        single_reigns.sort(key=lambda r: -r["days"])
+        single_reigns.sort(key=lambda r: (-r["matches"], -r["days"]))
         longest_reigns = single_reigns[:100]
 
         # 5c) Por país.
@@ -388,8 +391,8 @@ def main() -> None:
         total_reigns = len(reigns_rows)
         first_match = matches[-1] if matches else None
         last_match = matches[0] if matches else None
-        # Reinado más corto (por días reales)
-        shortest = min(single_reigns, key=lambda r: r["days"]) if single_reigns else None
+        # Reinado más corto (por partidos defendidos, luego días)
+        shortest = min(single_reigns, key=lambda r: (r["matches"], r["days"])) if single_reigns else None
         # Más cambios de campeón por año
         changes_per_year: dict[int, int] = {}
         for idx in range(1, len(reigns_rows)):

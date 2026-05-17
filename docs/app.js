@@ -444,11 +444,11 @@ async function loadRankingsView() {
         ${crestCellHTML(row.name, row.crest)}
         <div class="rank-info">
           <div class="rank-name">${escapeHtml(row.name)}</div>
-          <div class="rank-sub">${fmtNum(row.matches)} matches · ${row.reigns} reign${row.reigns === 1 ? "" : "s"}</div>
+          <div class="rank-sub">${row.reigns} reign${row.reigns === 1 ? "" : "s"} · ${fmtNum(row.days)} days</div>
         </div>
         <div class="rank-metric">
-          <span class="big">${fmtNum(row.days)}</span>
-          <span class="lbl">days</span>
+          <span class="big">${fmtNum(row.matches)}</span>
+          <span class="lbl">matches</span>
         </div>
       `;
       frag.appendChild(el);
@@ -504,11 +504,11 @@ async function loadReignsView() {
         ${crestCellHTML(row.club, row.crest)}
         <div class="rank-info">
           <div class="rank-name">${escapeHtml(row.club)}${row.is_current ? ' <span style="color:var(--gold);font-size:11px;">· current</span>' : ""}</div>
-          <div class="rank-sub">${range} · ${row.matches} matches${wartimeNote}</div>
+          <div class="rank-sub">${range} · ${fmtNum(row.days)} days${wartimeNote}</div>
         </div>
         <div class="rank-metric">
-          <span class="big">${fmtNum(row.days)}</span>
-          <span class="lbl">days</span>
+          <span class="big">${fmtNum(row.matches)}</span>
+          <span class="lbl">matches</span>
         </div>
       `;
       frag.appendChild(el);
@@ -582,8 +582,8 @@ async function loadStatsView() {
     { lbl: "Different champions", val: fmtNum(s.total_champions), extra: "Clubs that held the title" },
     { lbl: "Reign changes",   val: fmtNum(s.total_reigns),  extra: "Times the belt swapped hands" },
     { lbl: "Current champion", val: s.current_champion || "—", extra: "Holding it right now", gold: true },
-    { lbl: "Longest reign", val: `${fmtNum(s.longest_reign.days)}d`, extra: `${escapeHtml(s.longest_reign.club)} · ${s.longest_reign.matches} matches`, gold: true },
-    { lbl: "Shortest reign", val: `${s.shortest_reign.days}d`, extra: `${escapeHtml(s.shortest_reign.club)} · ${fmtShortDate(s.shortest_reign.started_on)}` },
+    { lbl: "Longest reign", val: `${fmtNum(s.longest_reign.matches)}`, extra: `${escapeHtml(s.longest_reign.club)} · ${fmtNum(s.longest_reign.days)} days`, gold: true },
+    { lbl: "Shortest reign", val: `${s.shortest_reign.matches}`, extra: `${escapeHtml(s.shortest_reign.club)} · ${fmtShortDate(s.shortest_reign.started_on)}` },
     { lbl: "Year with most changes", val: s.most_changes_year ? s.most_changes_year.year : "—", extra: s.most_changes_year ? `${s.most_changes_year.changes} reign changes` : "" },
   ];
   const html = `<div class="stats-grid">${
