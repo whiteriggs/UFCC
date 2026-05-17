@@ -2,12 +2,19 @@ name: Update champion
 
 on:
   schedule:
-    # Cada hora. football-data.org free permite 10 req/min, así que
-    # incluso con varios cambios encadenados de campeón vamos sobrados.
-    # El workflow no commitea si no hay cambios reales, así que el ruido
-    # en el historial se limita a los días con actividad.
-    - cron: "5 * * * *"
+    # Cada 5 minutos. update_from_api.py decide internamente si toca actuar:
+    #   - siempre actúa en el minuto :00 (un chequeo horario base)
+    #   - también actúa si estamos en la ventana de fin del próximo partido
+    #     conocido (kickoff + 95 min … kickoff + 5 h), para reflejar el
+    #     resultado con max ~5 min de retraso sin sobrecargar la API.
+    # Si no toca, el script hace exit 0 sin commits ni llamadas a la API.
+    - cron: "*/5 * * * *"
   workflow_dispatch:
+    inputs:
+      force:
+        description: "Forzar update aunque no toque (1=sí)"
+        required: false
+        default: "0"
 
 permissions:
   contents: write
@@ -30,6 +37,7 @@ jobs:
       - name: Run API update
         env:
           FOOTBALL_DATA_KEY: ${{ secrets.FOOTBALL_DATA_KEY }}
+          FORCE_UPDATE: ${{ github.event.inputs.force || '0' }}
         run: python update_from_api.py
 
       - name: Re-export web data

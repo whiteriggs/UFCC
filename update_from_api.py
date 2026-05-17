@@ -22,7 +22,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 DB_PATH = Path("ufcc.db")
@@ -355,7 +355,48 @@ def match_to_row(m: dict, champion: str) -> dict:
 
 # ---------------------- Main loop ----------------------
 
+NEXT_MATCH_PATH = Path("docs/data/next_match.json")
+
+
+def should_skip_run() -> bool:
+    """
+    Heurística para saltarse runs innecesarios del cron */5min:
+      - Si FORCE_UPDATE=1 está en env → no saltar.
+      - Si estamos en el minuto :05 de la hora → no saltar (chequeo horario base).
+      - Si no hay next_match.json → no saltar (puede ser primera vez).
+      - Si HAY next_match y AHORA está en la ventana [kickoff+95min, kickoff+5h]
+        → no saltar (estamos esperando el resultado o reescalado tras prórroga).
+      - En cualquier otro caso → saltar (exit 0 sin tocar API).
+    """
+    if os.environ.get("FORCE_UPDATE") == "1":
+        return False
+    now = datetime.now(timezone.utc)
+    # Bucket horario: el cron */5 dispara en :00, :05, :10... Tratamos :00 como
+    # el chequeo de cada hora (siempre lo hacemos para no perder updates aunque
+    # no haya next_match planeado).
+    if now.minute < 5:
+        return False
+    if not NEXT_MATCH_PATH.exists():
+        return False
+    try:
+        data = json.loads(NEXT_MATCH_PATH.read_text(encoding="utf-8"))
+    except Exception:
+        return False
+    if not data or not data.get("kickoff_utc"):
+        return False
+    try:
+        kickoff = datetime.fromisoformat(data["kickoff_utc"].replace("Z", "+00:00"))
+    except Exception:
+        return False
+    window_start = kickoff + timedelta(minutes=95)   # tras 90' + un margen mínimo
+    window_end = kickoff + timedelta(hours=5)        # prórroga, penaltis, retrasos
+    return not (window_start <= now <= window_end)
+
+
 def run() -> int:
+    if should_skip_run():
+        print("Skip: fuera de ventana de polling y no toca chequeo horario.")
+        return 0
     team_map = load_team_map()
     con = sqlite3.connect(DB_PATH)
     con.execute("PRAGMA foreign_keys = ON")
