@@ -277,6 +277,46 @@ def fetch_finished_matches(team_id: int, since_iso: str) -> list[dict]:
     return matches
 
 
+def fetch_next_scheduled_match(team_id: int) -> dict | None:
+    """Próximo partido SCHEDULED/TIMED del equipo, dentro de los siguientes 120 días."""
+    today = date.today()
+    horizon = today + timedelta(days=120)
+    data = api_get(
+        f"/teams/{team_id}/matches",
+        {
+            "dateFrom": today.isoformat(),
+            "dateTo": horizon.isoformat(),
+            "status": "SCHEDULED,TIMED",
+        },
+    )
+    matches = data.get("matches", [])
+    if not matches:
+        return None
+    matches.sort(key=lambda m: m["utcDate"])
+    return matches[0]
+
+
+def scheduled_to_payload(m: dict, champion: str) -> dict:
+    home = m["homeTeam"]["name"]
+    away = m["awayTeam"]["name"]
+    iso_dt = m["utcDate"]
+    competition = (m.get("competition") or {}).get("name", "")
+    venue = m.get("venue") or ""
+    return {
+        "champion": champion,
+        "kickoff_utc": iso_dt,
+        "home": home,
+        "away": away,
+        "home_crest": m["homeTeam"].get("crest"),
+        "away_crest": m["awayTeam"].get("crest"),
+        "competition": competition,
+        "venue": venue,
+        "is_home": home == champion,
+        "opponent": away if home == champion else home,
+        "opponent_crest": m["awayTeam"].get("crest") if home == champion else m["homeTeam"].get("crest"),
+    }
+
+
 def match_to_row(m: dict, champion: str) -> dict:
     home = m["homeTeam"]["name"]
     away = m["awayTeam"]["name"]
@@ -381,6 +421,31 @@ def run() -> int:
                 break
 
         print(f"Total partidos añadidos: {total_added}")
+
+        # Próximo partido del campeón vigente.
+        champion, _, _ = current_champion_state(con)
+        team_id = resolve_team_id(champion, team_map)
+        next_path = Path("docs/data/next_match.json")
+        next_path.parent.mkdir(parents=True, exist_ok=True)
+        payload: dict | None = None
+        if team_id is not None:
+            try:
+                m = fetch_next_scheduled_match(team_id)
+                if m:
+                    payload = scheduled_to_payload(m, champion)
+                    print(
+                        f"Próximo partido: {payload['kickoff_utc']} "
+                        f"{payload['home']} vs {payload['away']} ({payload['competition']})"
+                    )
+                else:
+                    print("Próximo partido: ninguno en los próximos 120 días.")
+            except Exception as e:
+                print(f"No se pudo obtener próximo partido: {e}")
+        next_path.write_text(
+            json.dumps(payload, ensure_ascii=False, indent=2) if payload else "null",
+            encoding="utf-8",
+        )
+
         return 0
     finally:
         con.close()

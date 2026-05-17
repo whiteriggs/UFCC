@@ -176,6 +176,35 @@ html, body {
 }
 .hero-since strong { color: var(--text); font-weight: 500; }
 
+.hero-next {
+  margin-top: 14px;
+  padding: 10px 12px;
+  background: rgba(246, 192, 80, 0.08);
+  border: 1px solid rgba(246, 192, 80, 0.35);
+  border-radius: 10px;
+  font-size: 13px;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.hero-next .next-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--gold);
+  font-weight: 700;
+}
+.hero-next .next-opp-crest {
+  width: 22px; height: 22px;
+  display: inline-flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.hero-next .next-opp-crest img { max-width: 100%; max-height: 100%; }
+.hero-next .next-vs { color: var(--text-dim); font-size: 11px; }
+.hero-next .next-meta { color: var(--text-dim); font-size: 12px; width: 100%; }
+
 .layout {
   display: grid;
   grid-template-columns: 1fr 56px;

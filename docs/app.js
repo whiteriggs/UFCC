@@ -259,6 +259,44 @@ function setupChampionHero() {
   miniCrestEl.innerHTML = crestHTML;
   miniNameEl.textContent = champion;
   miniDaysEl.textContent = days.toLocaleString();
+
+  loadNextMatch(champion);
+}
+
+async function loadNextMatch(champion) {
+  const el = document.getElementById("hero-next");
+  if (!el) return;
+  let data;
+  try {
+    const res = await fetch("data/next_match.json", { cache: "no-cache" });
+    if (!res.ok) return;
+    data = await res.json();
+  } catch (_) { return; }
+  if (!data || data.champion !== champion) {
+    el.hidden = true;
+    el.innerHTML = "";
+    return;
+  }
+  const kickoff = new Date(data.kickoff_utc);
+  if (isNaN(kickoff.getTime())) return;
+  const dateTxt = kickoff.toLocaleDateString(undefined, {
+    weekday: "short", day: "numeric", month: "short",
+  });
+  const timeTxt = kickoff.toLocaleTimeString(undefined, {
+    hour: "2-digit", minute: "2-digit",
+  });
+  const oppCrestHTML = data.opponent_crest
+    ? `<img src="${data.opponent_crest}" alt="">`
+    : "";
+  const venueTxt = data.is_home ? "Home" : "Away";
+  el.hidden = false;
+  el.innerHTML = `
+    <span class="next-label">Next match</span>
+    <span class="next-vs">${venueTxt} vs</span>
+    <span class="next-opp-crest">${oppCrestHTML}</span>
+    <strong>${escapeHtml(data.opponent)}</strong>
+    <span class="next-meta">${escapeHtml(dateTxt)} · ${escapeHtml(timeTxt)} · ${escapeHtml(data.competition || "TBD")}${data.venue ? " · " + escapeHtml(data.venue) : ""}</span>
+  `;
 }
 
 function daysSince(iso) {
