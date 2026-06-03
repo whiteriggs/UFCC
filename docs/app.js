@@ -443,7 +443,10 @@ function applyModeChrome() {
       const target = btn.dataset.mode;
       if ((target === "teams") === TEAMS) return;
       try { localStorage.setItem("ufcc.mode", target); } catch (_) {}
-      location.reload();
+      // Drop any ?mode deep-link param so it doesn't override the toggle on reload.
+      const url = new URL(location.href);
+      url.searchParams.delete("mode");
+      location.replace(url.toString());
     });
   });
 }
