@@ -2,9 +2,11 @@ name: Update nations (UFWC)
 
 on:
   schedule:
-    # Dos veces al día (07:00 y 19:00 UTC). theufwc.com mantiene el linaje
-    # oficial; re-scrapeamos su API y commiteamos sólo si el dataset cambia.
-    - cron: "0 7,19 * * *"
+    # Dos veces al día (07:05 y 19:05 UTC). El minuto :05 evita coincidir con
+    # update-champion.yml (corre en el :00 de cada hora) y reduce solapes de
+    # push a main. theufwc.com mantiene el linaje oficial; re-scrapeamos su API
+    # y commiteamos sólo si el dataset cambia.
+    - cron: "5 7,19 * * *"
   workflow_dispatch:
 
 permissions:
@@ -35,6 +37,9 @@ jobs:
             git config user.name  "github-actions[bot]"
             git add docs/data-ufwc
             git commit -m "chore: update UFWC nations dataset from theufwc.com API"
+            # La Action de clubs tambien empuja a main; rebase para evitar
+            # rechazos por solape de pushes.
+            git pull --rebase origin main
             git push
           else
             echo "No changes."

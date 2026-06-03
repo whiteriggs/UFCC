@@ -50,6 +50,9 @@ jobs:
             git config user.name  "github-actions[bot]"
             git add -A
             git commit -m "chore: daily champion update from api-football"
+            # La Action de nations tambien empuja a main; rebase para evitar
+            # rechazos por solape de pushes.
+            git pull --rebase origin main
             git push
           else
             echo "No changes."
