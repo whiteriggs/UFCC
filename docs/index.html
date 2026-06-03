@@ -6,6 +6,17 @@
   <meta name="theme-color" content="#0b0d10" />
   <title>UFCC — Unofficial Football Club Championship</title>
   <link rel="stylesheet" href="app.css" />
+  <script>
+    // Apply the saved mode before paint to avoid a theme flash.
+    (function () {
+      var mode = "clubs";
+      try { mode = localStorage.getItem("ufcc.mode") === "teams" ? "teams" : "clubs"; } catch (e) {}
+      document.documentElement.dataset.mode = mode;
+      document.title = mode === "teams"
+        ? "UFWC — Unofficial Football World Championships"
+        : "UFCC — Unofficial Football Club Championship";
+    })();
+  </script>
 </head>
 <body>
   <header class="topbar">
@@ -14,8 +25,12 @@
     </button>
     <div class="brand">
       <span class="dot"></span>
-      <h1>UFCC</h1>
-      <span class="sub">Unofficial Football Club Championship — a single title that passes to whichever club beats the current holder. Lineage tracked match by match since 1871.</span>
+      <h1 id="brand-title">Unofficial Football Club Championship</h1>
+      <span class="sub" id="brand-sub">A single title that passes to whichever club beats the current holder. Lineage tracked match by match since 1871.</span>
+    </div>
+    <div class="mode-switch" id="mode-switch" role="group" aria-label="Switch between clubs and nations">
+      <button type="button" class="mode-btn" data-mode="clubs">Clubs</button>
+      <button type="button" class="mode-btn" data-mode="teams">Nations</button>
     </div>
     <button type="button" class="mini-champ" id="mini-champ" aria-hidden="true" aria-label="Back to top">
       <div class="mini-crest" id="mini-crest"></div>

@@ -25,10 +25,28 @@ const miniNameEl = $("#mini-name");
 const miniDaysEl = $("#mini-days-n");
 const loadingEl = $("#loading");
 
+// ---- Mode (clubs = UFCC | teams = UFWC) ----------------------------------
+// The mode is set on <html data-mode> before paint by an inline script in
+// index.html. It selects the data folder and how "crests" are rendered:
+// clubs use image files, national teams use flag emoji.
+const TEAMS = document.documentElement.dataset.mode === "teams";
+const DATA_DIR = TEAMS ? "data-ufwc" : "data";
+const UNIT = TEAMS ? "team" : "club";
+const UNITS = TEAMS ? "teams" : "clubs";
+const ACCENT = TEAMS ? "#34d399" : "#f6c050";
+
 let matches = [];        // raw rows, DESC by match_no
-let clubs = {};          // name -> crest filename
+let clubs = {};          // name -> crest filename (clubs) or flag emoji (teams)
 let years = [];          // [{year, first_index, count}]
 let rendered = new Map();// index -> element (recycle pool)
+
+// Inner HTML for a crest box: image (clubs), flag emoji (teams) or initials.
+function crestInnerVal(name, val) {
+  if (TEAMS) return val ? `<span class="flag">${val}</span>` : initials(name);
+  return val ? `<img loading="lazy" src="crests/${val}" alt="">` : initials(name);
+}
+function crestInner(name) { return crestInnerVal(name, clubs[name]); }
+function hasCrest(name) { return !!clubs[name]; }
 
 const fmtDate = (iso) => {
   if (!iso) return ["—", ""];
@@ -38,7 +56,6 @@ const fmtDate = (iso) => {
 };
 
 const crestUrl = (name) => clubs[name] ? `crests/${clubs[name]}` : null;
-
 const initials = (name) =>
   name.split(/\s+/).filter(Boolean).slice(0, 2).map(s => s[0]).join("").toUpperCase();
 
@@ -60,9 +77,6 @@ function buildRow(idx) {
     (newChampion && champ === away ? " is-away" : "");
   el.style.transform = `translateY(${idx * ROW_H}px)`;
 
-  const crestH = crestUrl(home);
-  const crestA = crestUrl(away);
-
   el.innerHTML = `
     <div class="date">
       <div class="d">${d}</div>
@@ -72,16 +86,16 @@ function buildRow(idx) {
     <div class="body">
       <div class="fixture">
         <div class="team home ${homeWon ? "winner" : awayWon ? "loser" : ""}">
-          <div class="crest ${crestH ? "" : "placeholder"}">
-            ${crestH ? `<img loading="lazy" src="${crestH}" alt="">` : initials(home)}
+          <div class="crest ${hasCrest(home) ? "" : "placeholder"}">
+            ${crestInner(home)}
           </div>
           <div class="name">${escapeHtml(home)}</div>
         </div>
         <div class="score ${result === "D" ? "draw" : ""}">${escapeHtml(score)}</div>
         <div class="team away ${awayWon ? "winner" : homeWon ? "loser" : ""}">
           <div class="name">${escapeHtml(away)}</div>
-          <div class="crest ${crestA ? "" : "placeholder"}">
-            ${crestA ? `<img loading="lazy" src="${crestA}" alt="">` : initials(away)}
+          <div class="crest ${hasCrest(away) ? "" : "placeholder"}">
+            ${crestInner(away)}
           </div>
         </div>
       </div>
@@ -200,10 +214,11 @@ function attachTimelineDrag() {
 }
 
 async function main() {
+  applyModeChrome();
   const [m, c, y] = await Promise.all([
-    fetch("data/matches.json").then(r => r.json()),
-    fetch("data/clubs.json").then(r => r.json()),
-    fetch("data/years.json").then(r => r.json()),
+    fetch(`${DATA_DIR}/matches.json`).then(r => r.json()),
+    fetch(`${DATA_DIR}/clubs.json`).then(r => r.json()),
+    fetch(`${DATA_DIR}/years.json`).then(r => r.json()),
   ]);
   matches = m;
   clubs = c;
@@ -238,13 +253,10 @@ function setupChampionHero() {
   const reignStartMatch = matches[reignStartIdx];
   const startDateIso = reignStartMatch[1];
   const days = startDateIso ? daysSince(startDateIso) : 0;
-  const crest = crestUrl(champion);
 
-  const crestHTML = crest
-    ? `<img src="${crest}" alt="${escapeHtml(champion)} crest">`
-    : initials(champion);
+  const crestHTML = crestInner(champion);
   heroCrestEl.innerHTML = crestHTML;
-  if (!crest) heroCrestEl.classList.add("placeholder");
+  if (!hasCrest(champion)) heroCrestEl.classList.add("placeholder");
   heroNameEl.textContent = champion;
   heroDaysEl.textContent = days.toLocaleString();
 
@@ -268,10 +280,10 @@ async function loadNextMatch(champion) {
   if (!el) return;
   let data;
   try {
-    const res = await fetch("data/next_match.json", { cache: "no-cache" });
-    if (!res.ok) return;
+    const res = await fetch(`${DATA_DIR}/next_match.json`, { cache: "no-cache" });
+    if (!res.ok) { el.hidden = true; return; }
     data = await res.json();
-  } catch (_) { return; }
+  } catch (_) { el.hidden = true; return; }
   if (!data || data.champion !== champion) {
     el.hidden = true;
     el.innerHTML = "";
@@ -285,9 +297,9 @@ async function loadNextMatch(champion) {
   const timeTxt = kickoff.toLocaleTimeString(undefined, {
     hour: "2-digit", minute: "2-digit",
   });
-  const oppCrestHTML = data.opponent_crest
-    ? `<img src="${data.opponent_crest}" alt="">`
-    : "";
+  const oppCrestHTML = TEAMS
+    ? (hasCrest(data.opponent) ? crestInner(data.opponent) : "")
+    : (data.opponent_crest ? `<img src="${data.opponent_crest}" alt="">` : "");
   const venueTxt = data.is_home ? "Home" : "Away";
   el.hidden = false;
   el.innerHTML = `
@@ -401,6 +413,41 @@ function switchView(view) {
   try { localStorage.setItem("ufcc.view", view); } catch (_) {}
 }
 
+function applyModeChrome() {
+  const set = (id, txt) => { const el = document.getElementById(id); if (el) el.textContent = txt; };
+  const themeMeta = document.querySelector('meta[name="theme-color"]');
+  if (themeMeta) themeMeta.setAttribute("content", TEAMS ? "#0a0f0d" : "#0b0d10");
+  if (TEAMS) {
+    set("brand-title", "Unofficial Football World Championship");
+    set("brand-sub", "A single title that passes to whichever national team beats the current holder. Lineage tracked match by match since 1872.");
+  }
+  const eyebrow = document.querySelector("#hero .hero-eyebrow");
+  if (eyebrow) eyebrow.textContent = TEAMS ? "Current UFWC champion" : "Current UFCC champion";
+  if (TEAMS) {
+    const cl = document.querySelector('.ab-btn[data-view="countries"] .ab-label');
+    if (cl) cl.textContent = "Confeds";
+    const ch = document.querySelector('#view-countries .view-header h2');
+    if (ch) ch.textContent = "By confederation";
+    const cp = document.querySelector('#view-countries .view-header p');
+    if (cp) cp.textContent = "How long the championship has stayed in each confederation.";
+    const mp = document.querySelector('#view-map .view-header p');
+    if (mp) mp.textContent = "Each circle is a nation that has held the championship. Size reflects total days.";
+    document.querySelectorAll('#rankings-search, #reigns-search').forEach(i => { i.placeholder = "Filter teams…"; });
+  }
+  // Mode switch state + wiring.
+  document.querySelectorAll(".mode-btn").forEach(btn => {
+    const on = (btn.dataset.mode === "teams") === TEAMS;
+    btn.classList.toggle("active", on);
+    btn.setAttribute("aria-pressed", on ? "true" : "false");
+    btn.addEventListener("click", () => {
+      const target = btn.dataset.mode;
+      if ((target === "teams") === TEAMS) return;
+      try { localStorage.setItem("ufcc.mode", target); } catch (_) {}
+      location.reload();
+    });
+  });
+}
+
 function initActivityBar() {
   document.querySelectorAll(".ab-btn").forEach(btn => {
     btn.addEventListener("click", () => switchView(btn.dataset.view));
@@ -427,10 +474,7 @@ function initActivityBar() {
 /* ---------- Shared helpers ---------- */
 
 function crestCellHTML(name, crestFile, size = 36) {
-  if (crestFile) {
-    return `<div class="rank-crest"><img loading="lazy" src="crests/${crestFile}" alt=""></div>`;
-  }
-  return `<div class="rank-crest">${initials(name)}</div>`;
+  return `<div class="rank-crest">${crestInnerVal(name, crestFile)}</div>`;
 }
 
 function fmtNum(n) { return Number(n).toLocaleString(); }
@@ -443,7 +487,7 @@ function fmtShortDate(iso) {
 }
 
 async function loadJSON(name) {
-  const r = await fetch(`data/${name}`);
+  const r = await fetch(`${DATA_DIR}/${name}`);
   if (!r.ok) throw new Error(`Fetch ${name} ${r.status}`);
   return r.json();
 }
@@ -468,8 +512,8 @@ async function loadRankingsView() {
     const slice = filtered.slice(0, limit);
     if (meta) {
       meta.textContent = q
-        ? `${fmtNum(filtered.length)} club${filtered.length === 1 ? "" : "s"} match “${query.trim()}”.`
-        : `Showing top ${Math.min(200, data.length)} of ${fmtNum(data.length)} clubs.`;
+        ? `${fmtNum(filtered.length)} ${filtered.length === 1 ? UNIT : UNITS} match “${query.trim()}”.`
+        : `Showing top ${Math.min(200, data.length)} of ${fmtNum(data.length)} ${UNITS}.`;
     }
     const frag = document.createDocumentFragment();
     slice.forEach((row, i) => {
@@ -493,7 +537,7 @@ async function loadRankingsView() {
     });
     body.innerHTML = "";
     if (slice.length === 0) {
-      body.innerHTML = `<p style="color: var(--text-dim)">No clubs match.</p>`;
+      body.innerHTML = `<p style="color: var(--text-dim)">No ${UNITS} match.</p>`;
     } else {
       body.appendChild(frag);
     }
@@ -581,7 +625,7 @@ async function loadCountriesView() {
     el.className = "country-card";
     const chips = row.top_clubs.map(c =>
       `<span class="country-chip">
-        <span class="mini-c">${c.crest ? `<img src="crests/${c.crest}" alt="">` : initials(c.name)}</span>
+        <span class="mini-c">${crestInnerVal(c.name, c.crest)}</span>
         ${escapeHtml(c.name)}
         <span class="d">${fmtNum(c.days)}d</span>
       </span>`
@@ -590,7 +634,7 @@ async function loadCountriesView() {
       <div class="country-card-head">
         <div>
           <div class="name">${escapeHtml(row.country)}</div>
-          <div class="sub">${row.clubs_total} club${row.clubs_total === 1 ? "" : "s"} · ${fmtNum(row.matches)} matches</div>
+          <div class="sub">${row.clubs_total} ${row.clubs_total === 1 ? UNIT : UNITS} · ${fmtNum(row.matches)} matches</div>
         </div>
         <div class="days">${fmtNum(row.days)}d</div>
       </div>
@@ -616,8 +660,8 @@ async function loadStatsView() {
 
   const cards = [
     { lbl: "Total matches",   val: fmtNum(s.total_matches), extra: "Every game in the lineage" },
-    { lbl: "Clubs involved",  val: fmtNum(s.total_clubs),   extra: "Distinct clubs in any match" },
-    { lbl: "Different champions", val: fmtNum(s.total_champions), extra: "Clubs that held the title" },
+    { lbl: TEAMS ? "Teams involved" : "Clubs involved",  val: fmtNum(s.total_clubs),   extra: `Distinct ${UNITS} in any match` },
+    { lbl: "Different champions", val: fmtNum(s.total_champions), extra: `${TEAMS ? "Teams" : "Clubs"} that held the title` },
     { lbl: "Reign changes",   val: fmtNum(s.total_reigns),  extra: "Times the belt swapped hands" },
     { lbl: "Current champion", val: s.current_champion || "—", extra: "Holding it right now", gold: true },
     { lbl: "Longest reign", val: `${fmtNum(s.longest_reign.matches)}`, extra: `${escapeHtml(s.longest_reign.club)} · ${fmtNum(s.longest_reign.days)} days`, gold: true },
@@ -721,15 +765,13 @@ async function loadMapView() {
     const r = 4 + 22 * Math.sqrt(c.days / maxDays);
     const marker = L.circleMarker([c.lat, c.lon], {
       radius: r,
-      color: "#f6c050",
+      color: ACCENT,
       weight: 1,
-      fillColor: "#f6c050",
+      fillColor: ACCENT,
       fillOpacity: 0.55,
     }).addTo(map);
     marker.bindTooltip(c.name, { direction: "top", offset: [0, -2] });
-    const crestHTML = c.crest
-      ? `<img src="crests/${c.crest}" alt="">`
-      : initials(c.name);
+    const crestHTML = crestInnerVal(c.name, c.crest);
     marker.bindPopup(`
       <div class="map-popup">
         <div class="crest">${crestHTML}</div>

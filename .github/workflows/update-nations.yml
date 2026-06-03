@@ -1,0 +1,41 @@
+name: Update nations (UFWC)
+
+on:
+  schedule:
+    # Dos veces al día (07:00 y 19:00 UTC). theufwc.com mantiene el linaje
+    # oficial; re-scrapeamos su API y commiteamos sólo si el dataset cambia.
+    - cron: "0 7,19 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-nations
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Rebuild nations dataset from API
+        run: python scrape_ufwc.py
+
+      - name: Commit + push if changed
+        run: |
+          if [ -n "$(git status --porcelain docs/data-ufwc)" ]; then
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git config user.name  "github-actions[bot]"
+            git add docs/data-ufwc
+            git commit -m "chore: update UFWC nations dataset from theufwc.com API"
+            git push
+          else
+            echo "No changes."
+          fi

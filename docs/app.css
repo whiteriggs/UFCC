@@ -189,6 +189,7 @@ html, body {
   gap: 10px;
   flex-wrap: wrap;
 }
+.hero-next[hidden] { display: none; }
 .hero-next .next-label {
   font-size: 10px;
   text-transform: uppercase;
@@ -836,3 +837,80 @@ body.sidebar-collapsed .activity-bar { transform: translateX(-100%); }
   .stat-card .val { font-size: 24px; }
   .map-container { height: 60vh; min-height: 380px; }
 }
+
+/* ============================================================
+   MODE SWITCH (clubs UFCC ⇄ nations UFWC)
+   ============================================================ */
+.mode-switch {
+  display: inline-flex;
+  margin-left: auto;
+  margin-right: 12px;
+  background: var(--bg-3);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 2px;
+  flex-shrink: 0;
+}
+.mode-btn {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--text-dim);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+.mode-btn:hover { color: var(--text); }
+.mode-btn.active {
+  background: var(--gold);
+  color: #0b0d10;
+}
+@media (max-width: 560px) {
+  .brand .sub { display: none; }
+  .mode-btn { padding: 5px 9px; }
+}
+
+/* Flag emoji used as "crest" in nations mode. */
+.flag { line-height: 1; display: inline-block; }
+.hero-crest .flag { font-size: 76px; }
+.team .crest .flag { font-size: 23px; }
+.mini-crest .flag { font-size: 19px; }
+.rank-crest .flag { font-size: 26px; }
+.country-chip .mini-c .flag { font-size: 13px; }
+.map-popup .crest .flag { font-size: 22px; }
+@media (max-width: 560px) {
+  .hero-crest .flag { font-size: 52px; }
+  .team .crest .flag { font-size: 19px; }
+}
+
+/* ============================================================
+   UFWC NATIONS THEME — emerald on a cooler, greener dark.
+   Clearly distinct from the blue/gold clubs theme.
+   ============================================================ */
+html[data-mode="teams"] {
+  --bg: #0a0f0d;
+  --bg-2: #111a16;
+  --bg-3: #18241f;
+  --line: #243029;
+  --accent: #38bdf8;
+  --gold: #34d399;
+  --green: #34d399;
+}
+html[data-mode="teams"] .brand .dot {
+  background: #34d399;
+  box-shadow: 0 0 12px #34d399;
+}
+html[data-mode="teams"] .topbar {
+  background: rgba(10, 15, 13, 0.85);
+}
+html[data-mode="teams"] .hero {
+  background:
+    radial-gradient(circle at 20% 0%, rgba(52, 211, 153, 0.12), transparent 60%),
+    radial-gradient(circle at 80% 100%, rgba(56, 189, 248, 0.10), transparent 55%),
+    var(--bg);
+}
+
