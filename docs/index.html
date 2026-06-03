@@ -11,6 +11,13 @@
     (function () {
       var mode = "clubs";
       try { mode = localStorage.getItem("ufcc.mode") === "teams" ? "teams" : "clubs"; } catch (e) {}
+      // Deep-link override: ?mode=nations|teams|clubs (enlaces externos).
+      try {
+        var q = new URLSearchParams(location.search).get("mode");
+        if (q === "nations" || q === "teams") mode = "teams";
+        else if (q === "clubs") mode = "clubs";
+        if (q) { try { localStorage.setItem("ufcc.mode", mode); } catch (e) {} }
+      } catch (e) {}
       document.documentElement.dataset.mode = mode;
       document.title = mode === "teams"
         ? "UFWC — Unofficial Football World Championships"
