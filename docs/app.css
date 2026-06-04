@@ -874,8 +874,14 @@ body.sidebar-collapsed .activity-bar { transform: translateX(-100%); }
   .mode-btn { padding: 5px 9px; }
 }
 
-/* Flag emoji used as "crest" in nations mode. */
-.flag { line-height: 1; display: inline-block; }
+/* Flag emoji used as "crest" in nations mode.
+   Explicit emoji font stack so Chrome (BlinkMacSystemFont) renders flags;
+   without it Chrome shows nothing while Safari falls back automatically. */
+.flag {
+  line-height: 1;
+  display: inline-block;
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+}
 .hero-crest .flag { font-size: 76px; }
 .team .crest .flag { font-size: 23px; }
 .mini-crest .flag { font-size: 19px; }
