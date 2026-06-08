@@ -364,6 +364,8 @@ def should_skip_run() -> bool:
       - Si FORCE_UPDATE=1 está en env → no saltar.
       - Si estamos en el minuto :05 de la hora → no saltar (chequeo horario base).
       - Si no hay next_match.json → no saltar (puede ser primera vez).
+      - Si next_match.json es null/sin kickoff (campeón sin partido próximo,
+        fin de temporada) → saltar; el chequeo horario ya basta.
       - Si HAY next_match y AHORA está en la ventana [kickoff+95min, kickoff+5h]
         → no saltar (estamos esperando el resultado o reescalado tras prórroga).
       - En cualquier otro caso → saltar (exit 0 sin tocar API).
@@ -383,7 +385,10 @@ def should_skip_run() -> bool:
     except Exception:
         return False
     if not data or not data.get("kickoff_utc"):
-        return False
+        # No hay próximo partido conocido (p.ej. campeón en parón / fin de
+        # temporada). El chequeo horario ya se cubrió con `now.minute < 5`,
+        # así que aquí saltamos para no quemar la cuota de la API.
+        return True
     try:
         kickoff = datetime.fromisoformat(data["kickoff_utc"].replace("Z", "+00:00"))
     except Exception:
@@ -409,7 +414,15 @@ def run() -> int:
             if team_id is None:
                 print("  · sin team_id, abortando esta iteración.")
                 break
-            matches = fetch_finished_matches(team_id, last_date)
+            try:
+                matches = fetch_finished_matches(team_id, last_date)
+            except RuntimeError as e:
+                # Error transitorio de la API: 403 "check your subscription"
+                # esporádico, 429 rate-limit, 5xx o timeout. No marcamos el run
+                # como fallido: salimos limpio y el cron lo reintentará en la
+                # siguiente ventana (o en el chequeo horario).
+                print(f"  · WARN: API no disponible al pedir partidos de {champion}: {e}")
+                return 0
             print(f"  · {len(matches)} match(es) nuevo(s) desde {last_date}")
             if not matches:
                 break
