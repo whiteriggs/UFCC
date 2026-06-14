@@ -47,9 +47,13 @@ boxing-style title, but contested by national teams since the first ever
 international (Scotland 0–0 England, 1872). It uses a distinct emerald theme,
 flag emoji instead of crests, and groups the "Countries" view by confederation.
 
-The nations dataset is a one-shot scrape of
-[ufwc.co.uk/results](https://www.ufwc.co.uk/results/) (all 1,018 title matches
-are embedded in that page). It is static — re-run `scrape_ufwc.py` to refresh.
+The nations dataset is rebuilt from [theufwc.com](https://www.theufwc.com)'s API
+on every run of `scrape_ufwc.py`. When that site lags behind (typically during a
+tournament), `ufwc_live.py` follows the current champion via
+[football-data.org](https://www.football-data.org/) and appends the missing
+title matches, applying the same boxing-style rule; once theufwc.com catches up,
+the full rebuild absorbs them with no duplicates. A GitHub Action keeps it in
+sync automatically.
 
 ## Repo
 
@@ -60,7 +64,8 @@ docs/data-ufwc/       nations (UFWC) JSON
 ufcc.db               SQLite database (clubs)
 update_from_api.py    incremental updater (football-data.org)
 export_web.py         SQLite → JSON exporter (clubs)
-scrape_ufwc.py        one-shot UFWC nations scraper → docs/data-ufwc/
+scrape_ufwc.py        UFWC nations scraper (theufwc.com) → docs/data-ufwc/
+ufwc_live.py          live tail: follows the champion via football-data.org
 scrape_*.py           one-shot historical scrapers (clubs)
 .github/workflows/    automation
 ```

@@ -171,6 +171,16 @@ def main() -> None:
     DATA.mkdir(parents=True, exist_ok=True)
     rows = load_matches()  # ascendente por nº de partido
 
+    # Extensión "en vivo": si theufwc.com va por detrás (p.ej. durante un
+    # torneo), seguimos al campeón vigente con football-data.org y añadimos los
+    # partidos de título que falten. Sin FOOTBALL_DATA_KEY no hace nada.
+    live_next: dict | None = None
+    try:
+        from ufwc_live import extend as _live_extend
+        rows, live_next = _live_extend(rows)
+    except Exception as exc:
+        print(f"WARN: extensión en vivo desactivada: {exc}")
+
     flags: dict[str, str] = {}      # nombre selección -> emoji bandera ("escudo")
     confed: dict[str, str] = {}     # nombre selección -> confederación
     code_of: dict[str, str] = {}    # nombre selección -> código FIFA (centroides)
@@ -213,10 +223,23 @@ def main() -> None:
     )
 
     # next_match.json: próxima defensa del título (si hay partido programado).
+    # Prioridad a la extensión en vivo (football-data); si no la hay, theufwc.com.
     current = matches[0][8] if matches else None
-    nxt = load_next()
     nxt_path = DATA / "next_match.json"
     wrote_next = False
+    if live_next and current and live_next.get("opponent"):
+        opp = live_next["opponent"]
+        flags.setdefault(opp, FLAG.get(live_next.get("opponent_code", ""), ""))
+        write("next_match.json", {
+            "champion": live_next.get("champion", current),
+            "kickoff_utc": live_next["kickoff_utc"],
+            "opponent": opp,
+            "is_home": live_next.get("is_home", False),
+            "competition": live_next.get("competition", ""),
+            "venue": live_next.get("venue", ""),
+        })
+        wrote_next = True
+    nxt = None if wrote_next else load_next()
     if isinstance(nxt, dict) and nxt.get("home") and current:
         nh, na = nxt["home"], nxt["away"]
         nhn, nan = nh["name"]["en"], na["name"]["en"]

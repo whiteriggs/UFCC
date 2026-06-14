@@ -2,11 +2,12 @@ name: Update nations (UFWC)
 
 on:
   schedule:
-    # Dos veces al día (07:05 y 19:05 UTC). El minuto :05 evita coincidir con
-    # update-champion.yml (corre en el :00 de cada hora) y reduce solapes de
-    # push a main. theufwc.com mantiene el linaje oficial; re-scrapeamos su API
-    # y commiteamos sólo si el dataset cambia.
-    - cron: "5 7,19 * * *"
+    # Cada 15 min (en :05, :20, :35, :50 para no chocar con update-champion.yml,
+    # que dispara en el :00/:05). theufwc.com mantiene el linaje oficial y lo
+    # re-scrapeamos siempre (es barato); además, si esa web va por detrás,
+    # ufwc_live.py sigue al campeón con football-data.org y añade los partidos
+    # que falten. Commiteamos sólo si el dataset cambia.
+    - cron: "5,20,35,50 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -28,6 +29,8 @@ jobs:
           python-version: "3.12"
 
       - name: Rebuild nations dataset from API
+        env:
+          FOOTBALL_DATA_KEY: ${{ secrets.FOOTBALL_DATA_KEY }}
         run: python scrape_ufwc.py
 
       - name: Commit + push if changed
