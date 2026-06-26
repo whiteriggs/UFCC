@@ -20,6 +20,8 @@ lo generó theufwc.com.
 from __future__ import annotations
 
 import os
+import re
+import urllib.request
 from datetime import date, datetime, timezone
 
 try:
@@ -260,16 +262,191 @@ def _compute_next(
     }
 
 
+# ---------------------- Wikipedia (fallback sin auth) ----------------------
+#
+# theufwc.com cerró su API (401) y no hay registro posible. El infobox de la
+# página UFWC de Wikipedia lo mantiene la comunidad al día, es gratis y sin auth,
+# usa códigos FIFA ({{fb|TUR}}) y cubre amistosos / Nations League que el free
+# tier de football-data no trae. Lo usamos para reconciliar el campeón vigente
+# cuando football-data no capta un cambio de título.
+
+WIKI_URL = (
+    "https://en.wikipedia.org/w/index.php"
+    "?title=Unofficial_Football_World_Championships&action=raw&section=0"
+)
+WIKI_UA = "ufcc-bot/1.0 (+https://github.com/whiteriggs/UFCC)"
+
+_MONTHS = {
+    "january": 1, "february": 2, "march": 3, "april": 4, "may": 5, "june": 6,
+    "july": 7, "august": 8, "september": 9, "october": 10, "november": 11,
+    "december": 12,
+}
+
+
+def _wiki_section(text: str, start: str, ends: list[str]) -> str:
+    i = text.find(start)
+    if i < 0:
+        return ""
+    i += len(start)
+    j = len(text)
+    for e in ends:
+        k = text.find(e, i)
+        if 0 <= k < j:
+            j = k
+    return text[i:j]
+
+
+def _wiki_date(block: str) -> str | None:
+    clean = re.sub(r"<[^>]+>", " ", block)
+    m = re.search(r"(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})", clean)
+    if not m:
+        return None
+    mon = _MONTHS.get(m.group(2).lower())
+    if not mon:
+        return None
+    return f"{int(m.group(3)):04d}-{mon:02d}-{int(m.group(1)):02d}"
+
+
+def _wiki_link(block: str) -> str:
+    m = re.search(r"\[\[(?:[^\]|]*\|)?([^\]]+)\]\]", block)
+    return m.group(1).strip() if m else ""
+
+
+def _wiki_venue(block: str) -> str:
+    tail = re.split(r"<br\s*/?>", block)[-1]
+    tail = tail.split("<!--")[0]
+    tail = re.sub(r"\[\[(?:[^\]|]*\|)?([^\]]+)\]\]", r"\1", tail)
+    tail = re.sub(r"\{\{nowrap\|", "", tail)
+    tail = re.sub(r"<[^>]+>", "", tail)
+    return tail.replace("}}", "").strip(" |\n")
+
+
+def _wiki_event(block: str, with_score: bool) -> dict | None:
+    if not block:
+        return None
+    mo = re.search(r"\{\{fb\|([A-Za-z]{3})\}\}", block)
+    ev: dict = {
+        "date": _wiki_date(block),
+        "opponent_code": mo.group(1).upper() if mo else None,
+        "competition": _wiki_link(block),
+        "venue": _wiki_venue(block),
+    }
+    if with_score:
+        ms = re.search(r"(\d+)\s*[–-]\s*(\d+)\s*(?:\([^)]*\)\s*)?vs", block)
+        if ms:
+            ev["champ_goals"] = int(ms.group(1))
+            ev["opp_goals"] = int(ms.group(2))
+        mp = re.search(r"\(\s*(\d+)\s*[–-]\s*(\d+)\s*pen", block, re.I)
+        if mp:
+            ev["penalties"] = {"home": int(mp.group(1)), "away": int(mp.group(2))}
+    return ev
+
+
+def _wiki_infobox() -> dict | None:
+    """Lee y parsea el infobox: campeón actual, último cambio y próxima defensa."""
+    try:
+        req = urllib.request.Request(WIKI_URL, headers={"User-Agent": WIKI_UA})
+        with urllib.request.urlopen(req, timeout=30) as r:
+            text = r.read().decode("utf-8", errors="replace")
+    except Exception:
+        return None
+    champ_block = _wiki_section(text, "Current Champions", ["Title gained"])
+    gained_block = _wiki_section(text, "Title gained", ["Title defences", "Next defence"])
+    next_block = _wiki_section(text, "Next defence", ["|}"])
+    mc = re.search(r"\{\{fb\|([A-Za-z]{3})\}\}", champ_block)
+    champion_code = mc.group(1).upper() if mc else None
+    if not champion_code:
+        return None
+    return {
+        "champion_code": champion_code,
+        "gained": _wiki_event(gained_block, with_score=True),
+        "next": _wiki_event(next_block, with_score=False),
+    }
+
+
+def _wiki_reconcile(
+    wiki: dict,
+    rows: list[dict],
+    seen: set,
+    champion: str | None,
+    last_no: int,
+    last_date: str | None,
+    name_by_code: dict[str, str],
+    code_by_name: dict[str, str],
+    confed_by_name: dict[str, str],
+) -> tuple[str | None, int, str | None, int]:
+    """Si Wikipedia muestra un campeón más nuevo que el nuestro, añade ese partido."""
+    code = wiki.get("champion_code")
+    if not code:
+        return champion, last_no, last_date, 0
+    wiki_champ = name_by_code.get(code, code)
+    if wiki_champ == champion:
+        return champion, last_no, last_date, 0
+    g = wiki.get("gained")
+    if not g or not g.get("date"):
+        return champion, last_no, last_date, 0
+    d = g["date"]
+    if last_date and d <= last_date:
+        # No es más reciente que lo que ya tenemos: no tocamos el linaje.
+        return champion, last_no, last_date, 0
+    opp_code = g.get("opponent_code") or ""
+    opp_name = name_by_code.get(opp_code, opp_code or "Unknown")
+    if (d, wiki_champ, opp_name) in seen or (d, opp_name, wiki_champ) in seen:
+        return champion, last_no, last_date, 0
+    cg = g.get("champ_goals", 1)
+    og = g.get("opp_goals", 0)
+    penalties = g.get("penalties")
+    if cg == og and not penalties:
+        penalties = {"home": 1, "away": 0}
+    last_no += 1
+    rows.append(
+        _build_row(
+            match_no=last_no,
+            iso_dt=d + "T00:00:00Z",
+            home_ident=(wiki_champ, code, confed_by_name.get(wiki_champ, "Other")),
+            away_ident=(opp_name, opp_code, confed_by_name.get(opp_name, "Other")),
+            home_goals=cg,
+            away_goals=og,
+            penalties=penalties,
+        )
+    )
+    seen.add((d, wiki_champ, opp_name))
+    print(f"Reconciliación Wikipedia: +1 partido, campeón ahora {wiki_champ} (era {champion}).")
+    return wiki_champ, last_no, d, 1
+
+
+def _wiki_next(wiki: dict, champion: str | None, name_by_code: dict[str, str]) -> dict | None:
+    n = wiki.get("next")
+    if not n or not n.get("date") or not n.get("opponent_code"):
+        return None
+    opp_name = name_by_code.get(n["opponent_code"], n["opponent_code"])
+    venue = n.get("venue", "")
+    is_home = bool(champion and venue and venue.strip().endswith(champion))
+    return {
+        "champion": champion,
+        "kickoff_utc": n["date"] + "T00:00:00Z",
+        "opponent": opp_name,
+        "opponent_code": n["opponent_code"],
+        "is_home": is_home,
+        "competition": n.get("competition", ""),
+        "venue": venue,
+    }
+
+
 def extend(rows: list[dict]) -> tuple[list[dict], dict | None]:
     """
     Devuelve (rows_extendidas, live_next).
 
     - rows_extendidas: las filas de theufwc.com más, si procede, la cola de
-      partidos de título recientes que aún no había publicado.
-    - live_next: payload de next_match.json calculado desde football-data para el
-      campeón vigente (o None si no se pudo / no hay clave).
+      partidos de título recientes que aún no había publicado (vía football-data
+      durante torneos, y vía Wikipedia para amistosos / Nations League).
+    - live_next: payload de next_match.json (football-data si lo tiene; si no, la
+      próxima defensa que anuncia el infobox de Wikipedia).
+
+    Wikipedia funciona aunque no haya FOOTBALL_DATA_KEY: es el respaldo cuando
+    theufwc.com no está disponible.
     """
-    if not API_KEY or api_get is None or not rows:
+    if not rows:
         return rows, None
 
     rows = sorted(rows, key=lambda m: m["matchNumber"])
@@ -285,8 +462,10 @@ def extend(rows: list[dict]) -> tuple[list[dict], dict | None]:
     last_date = _iso_from_ms(rows[-1]["matchDate"])
     champion = _current_champion(rows)
     appended = 0
+    fd_available = bool(API_KEY and api_get is not None)
 
-    try:
+    if fd_available:
+      try:
         for _ in range(MAX_SWAPS + 1):
             if champion is None:
                 break
@@ -358,19 +537,34 @@ def extend(rows: list[dict]) -> tuple[list[dict], dict | None]:
 
             if not changed:
                 break
-    except Exception as exc:  # nunca romper el scrape por la extensión
-        print(f"WARN: extensión en vivo abortada: {exc}")
+      except Exception as exc:  # nunca romper el scrape por la extensión
+        print(f"WARN: extensión football-data abortada: {exc}")
 
     if appended:
         print(f"Extensión en vivo: +{appended} partido(s), campeón ahora {champion}.")
 
-    live_next = _compute_next(
-        champion or "",
-        code_by_name.get(champion or "", ""),
-        cache,
-        teams_cache,
-        name_by_code,
-        code_by_name,
-        confed_by_name,
-    )
+    # Respaldo Wikipedia (sin auth): reconcilia el campeón si football-data no
+    # captó el cambio (amistosos / Nations League) y aporta la próxima defensa.
+    wiki_next = None
+    wiki = _wiki_infobox()
+    if wiki:
+        champion, last_no, last_date, w_added = _wiki_reconcile(
+            wiki, rows, seen, champion, last_no, last_date,
+            name_by_code, code_by_name, confed_by_name,
+        )
+        appended += w_added
+        wiki_next = _wiki_next(wiki, champion, name_by_code)
+
+    fd_next = None
+    if fd_available:
+        fd_next = _compute_next(
+            champion or "",
+            code_by_name.get(champion or "", ""),
+            cache,
+            teams_cache,
+            name_by_code,
+            code_by_name,
+            confed_by_name,
+        )
+    live_next = fd_next or wiki_next
     return rows, live_next
