@@ -35,10 +35,10 @@ jobs:
 
       - name: Commit + push if changed
         run: |
-          if [ -n "$(git status --porcelain docs/data-ufwc)" ]; then
+          if [ -n "$(git status --porcelain docs/data-ufwc data/ufwc_base.json)" ]; then
             git config user.email "github-actions[bot]@users.noreply.github.com"
             git config user.name  "github-actions[bot]"
-            git add docs/data-ufwc
+            git add docs/data-ufwc data/ufwc_base.json
             git commit -m "chore: update UFWC nations dataset from theufwc.com API"
             # La Action de clubs tambien empuja a main; rebase para evitar
             # rechazos por solape de pushes.

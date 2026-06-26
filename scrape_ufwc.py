@@ -37,6 +37,11 @@ from pathlib import Path
 API_MATCHES = "https://www.theufwc.com/api/matches?order=asc&pageSize=9999&pageNumber=1"
 API_NEXT = "https://www.theufwc.com/api/matches/next"
 CACHE = Path("cache_html") / "theufwc_matches.json"
+# Snapshot base COMMITEADO (no en .gitignore). Es la red de seguridad cuando la
+# API de theufwc.com no está disponible (p.ej. devolvió 401 al cerrar su API):
+# el linaje histórico no cambia, así que basta con esta base + la extensión en
+# vivo (ufwc_live) para seguir actualizando el campeón vía football-data.org.
+BASE = Path("data") / "ufwc_base.json"
 DATA = Path("docs") / "data-ufwc"
 
 # Periodos de suspensión por las guerras mundiales (igual que el dataset clubs):
@@ -120,15 +125,28 @@ def fetch_json(url: str):
 
 
 def load_matches() -> list[dict]:
-    """Todos los partidos título (asc). API en vivo con caché en disco de fallback."""
+    """Todos los partidos título (asc). API en vivo con fallback a base/caché."""
     try:
         data = fetch_json(API_MATCHES)
         CACHE.parent.mkdir(parents=True, exist_ok=True)
         CACHE.write_text(json.dumps(data), encoding="utf-8")
-    except Exception as exc:  # sin red -> reusar último snapshot bueno
-        if not CACHE.exists():
-            raise SystemExit(f"No se puede acceder a la API y no hay caché: {exc}")
-        data = json.loads(CACHE.read_text(encoding="utf-8"))
+        # theufwc.com está vivo: refrescamos el snapshot base committeado para
+        # que la red de seguridad se mantenga al día (el workflow lo commitea).
+        try:
+            BASE.parent.mkdir(parents=True, exist_ok=True)
+            BASE.write_text(
+                json.dumps({"matches": data["matches"]}, ensure_ascii=False, separators=(",", ":")),
+                encoding="utf-8",
+            )
+        except Exception:
+            pass
+    except Exception as exc:  # API caída/401 -> base committeado o última caché
+        if BASE.exists():
+            data = json.loads(BASE.read_text(encoding="utf-8"))
+        elif CACHE.exists():
+            data = json.loads(CACHE.read_text(encoding="utf-8"))
+        else:
+            raise SystemExit(f"No se puede acceder a la API y no hay base/caché: {exc}")
     return sorted(data["matches"], key=lambda m: m["matchNumber"])
 
 
