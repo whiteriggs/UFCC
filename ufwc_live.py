@@ -22,7 +22,7 @@ from __future__ import annotations
 import os
 import re
 import urllib.request
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 
 try:
     from update_from_api import (
@@ -56,6 +56,28 @@ NAME_ALIASES = {
 
 def _norm(s: str) -> str:
     return (s or "").lower().replace(".", "").replace(",", "").strip()
+
+
+def _pair_key(a: str, b: str) -> frozenset:
+    return frozenset({a, b})
+
+
+def _is_dup(seen_pairs: set, d: str, a: str, b: str) -> bool:
+    """True si ya existe ese enfrentamiento (mismo par) dentro de ±1 día.
+
+    Fuentes distintas (theufwc/Wikipedia vs football-data) datan el mismo partido
+    con un día de diferencia por el huso horario; el par + tolerancia evita
+    duplicarlo.
+    """
+    pair = _pair_key(a, b)
+    try:
+        base = date.fromisoformat(d)
+    except Exception:
+        return (pair, d) in seen_pairs
+    for delta in (-1, 0, 1):
+        if (pair, (base + timedelta(days=delta)).isoformat()) in seen_pairs:
+            return True
+    return False
 
 
 def _iso_from_ms(ms: int) -> str:
@@ -367,7 +389,7 @@ def _wiki_infobox() -> dict | None:
 def _wiki_reconcile(
     wiki: dict,
     rows: list[dict],
-    seen: set,
+    seen_pairs: set,
     champion: str | None,
     last_no: int,
     last_date: str | None,
@@ -391,7 +413,7 @@ def _wiki_reconcile(
         return champion, last_no, last_date, 0
     opp_code = g.get("opponent_code") or ""
     opp_name = name_by_code.get(opp_code, opp_code or "Unknown")
-    if (d, wiki_champ, opp_name) in seen or (d, opp_name, wiki_champ) in seen:
+    if _is_dup(seen_pairs, d, wiki_champ, opp_name):
         return champion, last_no, last_date, 0
     cg = g.get("champ_goals", 1)
     og = g.get("opp_goals", 0)
@@ -410,7 +432,7 @@ def _wiki_reconcile(
             penalties=penalties,
         )
     )
-    seen.add((d, wiki_champ, opp_name))
+    seen_pairs.add((_pair_key(wiki_champ, opp_name), d))
     print(f"Reconciliación Wikipedia: +1 partido, campeón ahora {wiki_champ} (era {champion}).")
     return wiki_champ, last_no, d, 1
 
@@ -454,8 +476,8 @@ def extend(rows: list[dict]) -> tuple[list[dict], dict | None]:
     cache: dict[str, int] = {}
     teams_cache: dict[str, list[dict]] = {}
 
-    seen = {
-        (_iso_from_ms(m["matchDate"]), m["home"]["name"]["en"], m["away"]["name"]["en"])
+    seen_pairs = {
+        (_pair_key(m["home"]["name"]["en"], m["away"]["name"]["en"]), _iso_from_ms(m["matchDate"]))
         for m in rows
     }
     last_no = rows[-1]["matchNumber"]
@@ -503,7 +525,7 @@ def extend(rows: list[dict]) -> tuple[list[dict], dict | None]:
                     else (opp_ident, champ_ident)
                 )
                 hn, an = home_ident[0], away_ident[0]
-                if (d, hn, an) in seen:
+                if _is_dup(seen_pairs, d, hn, an):
                     continue
 
                 score = fm.get("score") or {}
@@ -525,7 +547,7 @@ def extend(rows: list[dict]) -> tuple[list[dict], dict | None]:
                         penalties=penalties,
                     )
                 )
-                seen.add((d, hn, an))
+                seen_pairs.add((_pair_key(hn, an), d))
                 appended += 1
                 last_date = d
 
@@ -549,7 +571,7 @@ def extend(rows: list[dict]) -> tuple[list[dict], dict | None]:
     wiki = _wiki_infobox()
     if wiki:
         champion, last_no, last_date, w_added = _wiki_reconcile(
-            wiki, rows, seen, champion, last_no, last_date,
+            wiki, rows, seen_pairs, champion, last_no, last_date,
             name_by_code, code_by_name, confed_by_name,
         )
         appended += w_added
