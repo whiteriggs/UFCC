@@ -1,13 +1,13 @@
 {
-  "champion": "Levante UD",
-  "kickoff_utc": "2026-09-13T14:15:00Z",
-  "home": "Levante UD",
-  "away": "FC Barcelona",
-  "home_crest": "https://crests.football-data.org/88.png",
-  "away_crest": "https://crests.football-data.org/81.png",
+  "champion": "FC Barcelona",
+  "kickoff_utc": "2026-09-16T19:30:00Z",
+  "home": "FC Barcelona",
+  "away": "Real Racing Club de Santander",
+  "home_crest": "https://crests.football-data.org/81.png",
+  "away_crest": "https://crests.football-data.org/5335.png",
   "competition": "Primera Division",
   "venue": "",
   "is_home": true,
-  "opponent": "FC Barcelona",
-  "opponent_crest": "https://crests.football-data.org/81.png"
+  "opponent": "Real Racing Club de Santander",
+  "opponent_crest": "https://crests.football-data.org/5335.png"
 }
