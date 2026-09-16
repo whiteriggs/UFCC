@@ -1,13 +1,13 @@
 {
   "champion": "FC Barcelona",
-  "kickoff_utc": "2026-09-16T19:30:00Z",
-  "home": "FC Barcelona",
-  "away": "Real Racing Club de Santander",
-  "home_crest": "https://crests.football-data.org/81.png",
-  "away_crest": "https://crests.football-data.org/5335.png",
+  "kickoff_utc": "2026-09-19T19:00:00Z",
+  "home": "Sevilla FC",
+  "away": "FC Barcelona",
+  "home_crest": "https://crests.football-data.org/559.png",
+  "away_crest": "https://crests.football-data.org/81.png",
   "competition": "Primera Division",
   "venue": "",
-  "is_home": true,
-  "opponent": "Real Racing Club de Santander",
-  "opponent_crest": "https://crests.football-data.org/5335.png"
+  "is_home": false,
+  "opponent": "Sevilla FC",
+  "opponent_crest": "https://crests.football-data.org/559.png"
 }
