@@ -5,9 +5,9 @@ on:
     # Bloque gestionado por schedule_next_run.py: despertares calculados a
     # partir del próximo partido del campeón. NO editar a mano.
     # >>> AUTO-SCHEDULE
-    - cron: "50 20 19 9 *"
-    - cron: "30 21 19 9 *"
-    - cron: "0 23 19 9 *"
+    - cron: "20 18 10 10 *"
+    - cron: "0 19 10 10 *"
+    - cron: "30 20 10 10 *"
     # <<< AUTO-SCHEDULE
     # Red de seguridad: un chequeo diario pase lo que pase. También mantiene el
     # repo con actividad para que GitHub no desactive los crons por inactividad.
