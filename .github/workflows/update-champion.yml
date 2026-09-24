@@ -35,12 +35,12 @@ jobs:
       # funcionando: queda el chequeo diario.
       HAS_WORKFLOW_PAT: ${{ secrets.WORKFLOW_PAT != '' }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           token: ${{ secrets.WORKFLOW_PAT || github.token }}
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
