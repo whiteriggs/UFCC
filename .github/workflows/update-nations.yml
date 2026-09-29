@@ -1,15 +1,13 @@
 name: Update nations (UFWC)
 
 on:
-  # ⏸️ Cron PAUSADO (sin partidos hasta septiembre 2026) para ahorrar minutos de
-  # GitHub Actions. Para reactivar, descomenta el bloque `schedule` de abajo.
-  # schedule:
-  #   # Cada 15 min (en :05, :20, :35, :50 para no chocar con update-champion.yml,
-  #   # que dispara en el :00/:05). theufwc.com mantiene el linaje oficial y lo
-  #   # re-scrapeamos siempre (es barato); además, si esa web va por detrás,
-  #   # ufwc_live.py sigue al campeón con football-data.org y añade los partidos
-  #   # que falten. Commiteamos sólo si el dataset cambia.
-  #   - cron: "5,20,35,50 * * * *"
+  schedule:
+    # Cada 15 min (en :05, :20, :35, :50 para no chocar con update-champion.yml,
+    # que dispara en el :00/:05). theufwc.com mantiene el linaje oficial y lo
+    # re-scrapeamos siempre (es barato); además, si esa web va por detrás,
+    # ufwc_live.py sigue al campeón con football-data.org y añade los partidos
+    # que falten. Commiteamos sólo si el dataset cambia.
+    - cron: "5,20,35,50 * * * *"
   workflow_dispatch:
 
 permissions:
