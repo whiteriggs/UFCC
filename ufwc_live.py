@@ -335,12 +335,23 @@ def _wiki_link(block: str) -> str:
 
 
 def _wiki_venue(block: str) -> str:
+    block = block.strip().split("\n|-")[0]
     tail = re.split(r"<br\s*/?>", block)[-1]
     tail = tail.split("<!--")[0]
     tail = re.sub(r"\[\[(?:[^\]|]*\|)?([^\]]+)\]\]", r"\1", tail)
     tail = re.sub(r"\{\{nowrap\|", "", tail)
     tail = re.sub(r"<[^>]+>", "", tail)
     return tail.replace("}}", "").strip(" |\n")
+
+
+def _wiki_competition(block: str) -> str:
+    # Lineas: fecha | año + resultado | competición | sede
+    parts = re.split(r"<br\s*/?>", block.strip().split("\n|-")[0])
+    if len(parts) < 3:
+        return _wiki_link(block)
+    comp = re.sub(r"\[\[(?:[^\]|]*\|)?([^\]]+)\]\]", r"\1", parts[-2])
+    comp = re.sub(r"\{\{nowrap\|", "", comp)
+    return re.sub(r"<[^>]+>", "", comp).replace("}}", "").strip(" |\n")
 
 
 def _wiki_event(block: str, with_score: bool) -> dict | None:
@@ -350,7 +361,7 @@ def _wiki_event(block: str, with_score: bool) -> dict | None:
     ev: dict = {
         "date": _wiki_date(block),
         "opponent_code": mo.group(1).upper() if mo else None,
-        "competition": _wiki_link(block),
+        "competition": _wiki_competition(block),
         "venue": _wiki_venue(block),
     }
     if with_score:
@@ -374,16 +385,58 @@ def _wiki_infobox() -> dict | None:
         return None
     champ_block = _wiki_section(text, "Current Champions", ["Title gained"])
     gained_block = _wiki_section(text, "Title gained", ["Title defences", "Next defence"])
+    defences_block = _wiki_section(text, "Title defences", ["Next defence"])
     next_block = _wiki_section(text, "Next defence", ["|}"])
     mc = re.search(r"\{\{fb\|([A-Za-z]{3})\}\}", champ_block)
     champion_code = mc.group(1).upper() if mc else None
     if not champion_code:
         return None
+    defences = [
+        ev
+        for chunk in defences_block.split("|-")
+        if "{{fb|" in chunk
+        for ev in [_wiki_event(chunk, with_score=True)]
+        if ev and ev.get("date") and "champ_goals" in ev
+    ]
     return {
         "champion_code": champion_code,
         "gained": _wiki_event(gained_block, with_score=True),
+        "defences": sorted(defences, key=lambda e: e["date"]),
         "next": _wiki_event(next_block, with_score=False),
     }
+
+
+def _wiki_row(
+    ev: dict,
+    champ: str,
+    champ_code: str,
+    match_no: int,
+    name_by_code: dict[str, str],
+    confed_by_name: dict[str, str],
+    penalties: dict | None,
+) -> tuple[dict, str]:
+    """Fila del partido; el rival es local si la sede está en su país."""
+    opp_code = ev.get("opponent_code") or ""
+    opp_name = name_by_code.get(opp_code, opp_code or "Unknown")
+    champ_ident = (champ, champ_code, confed_by_name.get(champ, "Other"))
+    opp_ident = (opp_name, opp_code, confed_by_name.get(opp_name, "Other"))
+    cg, og = ev.get("champ_goals", 1), ev.get("opp_goals", 0)
+    country = (ev.get("venue") or "").rsplit(",", 1)[-1].strip()
+    if country == opp_name:
+        if penalties:
+            penalties = {"home": penalties["away"], "away": penalties["home"]}
+        row = _build_row(
+            match_no=match_no, iso_dt=ev["date"] + "T00:00:00Z",
+            home_ident=opp_ident, away_ident=champ_ident,
+            home_goals=og, away_goals=cg, penalties=penalties,
+        )
+    else:
+        row = _build_row(
+            match_no=match_no, iso_dt=ev["date"] + "T00:00:00Z",
+            home_ident=champ_ident, away_ident=opp_ident,
+            home_goals=cg, away_goals=og, penalties=penalties,
+        )
+    return row, opp_name
 
 
 def _wiki_reconcile(
@@ -415,26 +468,48 @@ def _wiki_reconcile(
     opp_name = name_by_code.get(opp_code, opp_code or "Unknown")
     if _is_dup(seen_pairs, d, wiki_champ, opp_name):
         return champion, last_no, last_date, 0
-    cg = g.get("champ_goals", 1)
-    og = g.get("opp_goals", 0)
     penalties = g.get("penalties")
-    if cg == og and not penalties:
+    if g.get("champ_goals", 1) == g.get("opp_goals", 0) and not penalties:
         penalties = {"home": 1, "away": 0}
     last_no += 1
-    rows.append(
-        _build_row(
-            match_no=last_no,
-            iso_dt=d + "T00:00:00Z",
-            home_ident=(wiki_champ, code, confed_by_name.get(wiki_champ, "Other")),
-            away_ident=(opp_name, opp_code, confed_by_name.get(opp_name, "Other")),
-            home_goals=cg,
-            away_goals=og,
-            penalties=penalties,
-        )
-    )
+    row, _ = _wiki_row(g, wiki_champ, code, last_no, name_by_code, confed_by_name, penalties)
+    rows.append(row)
     seen_pairs.add((_pair_key(wiki_champ, opp_name), d))
     print(f"Reconciliación Wikipedia: +1 partido, campeón ahora {wiki_champ} (era {champion}).")
     return wiki_champ, last_no, d, 1
+
+
+def _wiki_defences(
+    wiki: dict,
+    rows: list[dict],
+    seen_pairs: set,
+    champion: str | None,
+    last_no: int,
+    last_date: str | None,
+    name_by_code: dict[str, str],
+    confed_by_name: dict[str, str],
+) -> tuple[int, str | None, int]:
+    """Añade las defensas del título que Wikipedia lista y aún no tenemos."""
+    code = wiki.get("champion_code") or ""
+    if not champion or name_by_code.get(code, code) != champion:
+        return last_no, last_date, 0
+    added = 0
+    for ev in wiki.get("defences") or []:
+        d = ev["date"]
+        if last_date and d <= last_date:
+            continue
+        opp_code = ev.get("opponent_code") or ""
+        if _is_dup(seen_pairs, d, champion, name_by_code.get(opp_code, opp_code)):
+            continue
+        row, opp_name = _wiki_row(ev, champion, code, last_no + 1, name_by_code, confed_by_name, None)
+        last_no += 1
+        rows.append(row)
+        seen_pairs.add((_pair_key(champion, opp_name), d))
+        last_date = d
+        added += 1
+    if added:
+        print(f"Defensas Wikipedia: +{added} partido(s) de {champion}.")
+    return last_no, last_date, added
 
 
 def _wiki_next(wiki: dict, champion: str | None, name_by_code: dict[str, str]) -> dict | None:
@@ -575,6 +650,11 @@ def extend(rows: list[dict]) -> tuple[list[dict], dict | None]:
             name_by_code, code_by_name, confed_by_name,
         )
         appended += w_added
+        last_no, last_date, w_def = _wiki_defences(
+            wiki, rows, seen_pairs, champion, last_no, last_date,
+            name_by_code, confed_by_name,
+        )
+        appended += w_def
         wiki_next = _wiki_next(wiki, champion, name_by_code)
 
     fd_next = None
