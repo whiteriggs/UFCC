@@ -1,13 +1,13 @@
 {
   "champion": "FC Barcelona",
-  "kickoff_utc": "2026-10-10T16:30:00Z",
-  "home": "FC Barcelona",
-  "away": "Getafe CF",
-  "home_crest": "https://crests.football-data.org/81.png",
-  "away_crest": "https://crests.football-data.org/82.png",
-  "competition": "Primera Division",
+  "kickoff_utc": "2026-10-13T19:00:00Z",
+  "home": "Galatasaray SK",
+  "away": "FC Barcelona",
+  "home_crest": "https://crests.football-data.org/610.png",
+  "away_crest": "https://crests.football-data.org/81.png",
+  "competition": "UEFA Champions League",
   "venue": "",
-  "is_home": true,
-  "opponent": "Getafe CF",
-  "opponent_crest": "https://crests.football-data.org/82.png"
+  "is_home": false,
+  "opponent": "Galatasaray SK",
+  "opponent_crest": "https://crests.football-data.org/610.png"
 }
