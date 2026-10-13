@@ -1,13 +1,13 @@
 {
   "champion": "FC Barcelona",
-  "kickoff_utc": "2026-10-13T19:00:00Z",
-  "home": "Galatasaray SK",
+  "kickoff_utc": "2026-10-17T16:30:00Z",
+  "home": "Real Betis Balompié",
   "away": "FC Barcelona",
-  "home_crest": "https://crests.football-data.org/610.png",
+  "home_crest": "https://crests.football-data.org/90.png",
   "away_crest": "https://crests.football-data.org/81.png",
-  "competition": "UEFA Champions League",
+  "competition": "Primera Division",
   "venue": "",
   "is_home": false,
-  "opponent": "Galatasaray SK",
-  "opponent_crest": "https://crests.football-data.org/610.png"
+  "opponent": "Real Betis Balompié",
+  "opponent_crest": "https://crests.football-data.org/90.png"
 }
