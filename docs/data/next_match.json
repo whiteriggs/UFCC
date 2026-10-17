@@ -1,13 +1,13 @@
 {
   "champion": "FC Barcelona",
-  "kickoff_utc": "2026-10-17T16:30:00Z",
-  "home": "Real Betis Balompié",
+  "kickoff_utc": "2026-10-20T19:00:00Z",
+  "home": "Paris Saint-Germain FC",
   "away": "FC Barcelona",
-  "home_crest": "https://crests.football-data.org/90.png",
+  "home_crest": "https://crests.football-data.org/524.png",
   "away_crest": "https://crests.football-data.org/81.png",
-  "competition": "Primera Division",
+  "competition": "UEFA Champions League",
   "venue": "",
   "is_home": false,
-  "opponent": "Real Betis Balompié",
-  "opponent_crest": "https://crests.football-data.org/90.png"
+  "opponent": "Paris Saint-Germain FC",
+  "opponent_crest": "https://crests.football-data.org/524.png"
 }
