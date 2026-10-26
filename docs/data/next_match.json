@@ -1,13 +1,13 @@
 {
   "champion": "Paris Saint-Germain FC",
-  "kickoff_utc": "2026-10-26T19:30:00Z",
-  "home": "Paris Saint-Germain FC",
-  "away": "Olympique Lyonnais",
-  "home_crest": "https://crests.football-data.org/524.png",
-  "away_crest": "https://crests.football-data.org/523.png",
+  "kickoff_utc": "2026-10-30T18:00:00Z",
+  "home": "Le Havre AC",
+  "away": "Paris Saint-Germain FC",
+  "home_crest": "https://crests.football-data.org/533.png",
+  "away_crest": "https://crests.football-data.org/524.png",
   "competition": "Ligue 1",
   "venue": "",
-  "is_home": true,
-  "opponent": "Olympique Lyonnais",
-  "opponent_crest": "https://crests.football-data.org/523.png"
+  "is_home": false,
+  "opponent": "Le Havre AC",
+  "opponent_crest": "https://crests.football-data.org/533.png"
 }
