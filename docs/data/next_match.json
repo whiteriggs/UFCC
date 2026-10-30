@@ -1,13 +1,13 @@
 {
   "champion": "Paris Saint-Germain FC",
-  "kickoff_utc": "2026-10-30T18:00:00Z",
-  "home": "Le Havre AC",
+  "kickoff_utc": "2026-11-03T20:00:00Z",
+  "home": "Villarreal CF",
   "away": "Paris Saint-Germain FC",
-  "home_crest": "https://crests.football-data.org/533.png",
+  "home_crest": "https://crests.football-data.org/94.png",
   "away_crest": "https://crests.football-data.org/524.png",
-  "competition": "Ligue 1",
+  "competition": "UEFA Champions League",
   "venue": "",
   "is_home": false,
-  "opponent": "Le Havre AC",
-  "opponent_crest": "https://crests.football-data.org/533.png"
+  "opponent": "Villarreal CF",
+  "opponent_crest": "https://crests.football-data.org/94.png"
 }
