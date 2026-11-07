@@ -1,13 +1,13 @@
 {
   "champion": "Paris Saint-Germain FC",
-  "kickoff_utc": "2026-11-07T20:05:00Z",
-  "home": "Paris Saint-Germain FC",
-  "away": "ES Troyes AC",
-  "home_crest": "https://crests.football-data.org/524.png",
-  "away_crest": "https://crests.football-data.org/531.png",
+  "kickoff_utc": "2026-11-21T16:15:00Z",
+  "home": "OGC Nice",
+  "away": "Paris Saint-Germain FC",
+  "home_crest": "https://crests.football-data.org/522.png",
+  "away_crest": "https://crests.football-data.org/524.png",
   "competition": "Ligue 1",
   "venue": "",
-  "is_home": true,
-  "opponent": "ES Troyes AC",
-  "opponent_crest": "https://crests.football-data.org/531.png"
+  "is_home": false,
+  "opponent": "OGC Nice",
+  "opponent_crest": "https://crests.football-data.org/522.png"
 }
