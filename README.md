@@ -52,8 +52,13 @@ on every run of `scrape_ufwc.py`. When that site lags behind (typically during a
 tournament), `ufwc_live.py` follows the current champion via
 [football-data.org](https://www.football-data.org/) and appends the missing
 title matches, applying the same boxing-style rule; once theufwc.com catches up,
-the full rebuild absorbs them with no duplicates. A GitHub Action keeps it in
-sync automatically.
+the full rebuild absorbs them with no duplicates. Wikipedia supplies title
+changes and defences outside the API's coverage, even without an API key.
+The complete extended lineage is saved in `data/ufwc_base.json` after each
+successful rebuild. An outdated API cannot discard this saved tail, and a
+Wikipedia title change against a team other than the saved champion stops
+publication instead of silently skipping a reign. A GitHub Action keeps it
+in sync automatically and runs `python -m unittest -v test_ufwc` first.
 
 ## Repo
 

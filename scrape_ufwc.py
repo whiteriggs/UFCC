@@ -33,14 +33,15 @@ import json
 import urllib.request
 from datetime import date, datetime, timezone
 from pathlib import Path
+from urllib.error import URLError
 
 API_MATCHES = "https://www.theufwc.com/api/matches?order=asc&pageSize=9999&pageNumber=1"
 API_NEXT = "https://www.theufwc.com/api/matches/next"
 CACHE = Path("cache_html") / "theufwc_matches.json"
 # Snapshot base COMMITEADO (no en .gitignore). Es la red de seguridad cuando la
 # API de theufwc.com no está disponible (p.ej. devolvió 401 al cerrar su API):
-# el linaje histórico no cambia, así que basta con esta base + la extensión en
-# vivo (ufwc_live) para seguir actualizando el campeón vía football-data.org.
+# Incluye también la extensión en vivo para conservar los reinados anteriores
+# cuando Wikipedia cambia su infobox al nuevo campeón.
 BASE = Path("data") / "ufwc_base.json"
 DATA = Path("docs") / "data-ufwc"
 
@@ -125,29 +126,27 @@ def fetch_json(url: str):
 
 
 def load_matches() -> list[dict]:
-    """Todos los partidos título (asc). API en vivo con fallback a base/caché."""
+    """API histórica más la cola persistida; base/caché si la API no responde."""
+    snapshot = BASE if BASE.exists() else CACHE
+    saved = (
+        sorted(json.loads(snapshot.read_text(encoding="utf-8"))["matches"],
+               key=lambda m: m["matchNumber"])
+        if snapshot.exists() else []
+    )
     try:
         data = fetch_json(API_MATCHES)
-        CACHE.parent.mkdir(parents=True, exist_ok=True)
-        CACHE.write_text(json.dumps(data), encoding="utf-8")
-        # theufwc.com está vivo: refrescamos el snapshot base committeado para
-        # que la red de seguridad se mantenga al día (el workflow lo commitea).
-        try:
-            BASE.parent.mkdir(parents=True, exist_ok=True)
-            BASE.write_text(
-                json.dumps({"matches": data["matches"]}, ensure_ascii=False, separators=(",", ":")),
-                encoding="utf-8",
-            )
-        except Exception:
-            pass
-    except Exception as exc:  # API caída/401 -> base committeado o última caché
-        if BASE.exists():
-            data = json.loads(BASE.read_text(encoding="utf-8"))
-        elif CACHE.exists():
-            data = json.loads(CACHE.read_text(encoding="utf-8"))
-        else:
+    except (URLError, TimeoutError, json.JSONDecodeError) as exc:
+        if not saved:
             raise SystemExit(f"No se puede acceder a la API y no hay base/caché: {exc}")
-    return sorted(data["matches"], key=lambda m: m["matchNumber"])
+        print(f"WARN: API UFWC no disponible; usando {snapshot}: {exc}")
+        return saved
+    if not isinstance(data, dict) or not isinstance(data.get("matches"), list) or not data["matches"]:
+        raise ValueError("La API UFWC no devolvió un historial válido; no se publica.")
+    from ufwc_live import merge_history
+    rows = merge_history(data["matches"], saved)
+    CACHE.parent.mkdir(parents=True, exist_ok=True)
+    CACHE.write_text(json.dumps(data), encoding="utf-8")
+    return rows
 
 
 def load_next() -> dict | None:
@@ -191,13 +190,10 @@ def main() -> None:
 
     # Extensión "en vivo": si theufwc.com va por detrás (p.ej. durante un
     # torneo), seguimos al campeón vigente con football-data.org y añadimos los
-    # partidos de título que falten. Sin FOOTBALL_DATA_KEY no hace nada.
+    # partidos de título que falten. Wikipedia funciona también sin API key.
     live_next: dict | None = None
-    try:
-        from ufwc_live import extend as _live_extend
-        rows, live_next = _live_extend(rows)
-    except Exception as exc:
-        print(f"WARN: extensión en vivo desactivada: {exc}")
+    from ufwc_live import extend as _live_extend
+    rows, live_next = _live_extend(rows)
 
     flags: dict[str, str] = {}      # nombre selección -> emoji bandera ("escudo")
     confed: dict[str, str] = {}     # nombre selección -> confederación
@@ -405,6 +401,12 @@ def main() -> None:
         "current_champion": matches[0][8] if matches else None,
     }
     write("stats.json", stats)
+
+    BASE.parent.mkdir(parents=True, exist_ok=True)
+    BASE.write_text(
+        json.dumps({"matches": rows}, ensure_ascii=False, separators=(",", ":")),
+        encoding="utf-8",
+    )
 
     print(f"OK — {len(matches)} matches, {len(per_days)} champions, "
           f"current: {stats['current_champion']}")

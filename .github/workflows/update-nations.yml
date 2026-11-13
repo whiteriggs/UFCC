@@ -28,6 +28,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Test nations history preservation
+        run: python -m unittest -v test_ufwc
+
       - name: Rebuild nations dataset from API
         env:
           FOOTBALL_DATA_KEY: ${{ secrets.FOOTBALL_DATA_KEY }}

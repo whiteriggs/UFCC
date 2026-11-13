@@ -13,8 +13,8 @@ theufwc.com se pone al día, el rebuild completo vuelve a partir de su API y la
 cola sintética se deduplica por (fecha, local, visitante): todo encaja sin
 duplicar.
 
-Sin FOOTBALL_DATA_KEY el módulo no hace nada y el dataset queda exactamente como
-lo generó theufwc.com.
+El scraper persiste el linaje extendido para conservarlo cuando cambie el
+infobox de Wikipedia. Sin FOOTBALL_DATA_KEY se usa únicamente ese respaldo web.
 """
 
 from __future__ import annotations
@@ -130,6 +130,32 @@ def _current_champion(rows: list[dict]) -> str | None:
         else:
             champ = champ if champ is not None else hn
     return champ
+
+
+def merge_history(official: list[dict], saved: list[dict]) -> list[dict]:
+    """Prioriza la API y conserva los partidos posteriores ya registrados."""
+    rows = sorted(official, key=lambda m: m["matchNumber"])
+    cutoff = _iso_from_ms(rows[-1]["matchDate"])
+    seen = {
+        (_pair_key(m["home"]["name"]["en"], m["away"]["name"]["en"]),
+         _iso_from_ms(m["matchDate"]))
+        for m in rows
+    }
+    champion = _current_champion(rows)
+    for match in sorted(saved, key=lambda m: m["matchNumber"]):
+        day = _iso_from_ms(match["matchDate"])
+        home, away = match["home"]["name"]["en"], match["away"]["name"]["en"]
+        if day <= cutoff or _is_dup(seen, day, home, away):
+            continue
+        if champion not in (home, away):
+            raise ValueError(f"Salto de linaje el {day}: {home}–{away}, campeón {champion}.")
+        rows.append({**match, "matchNumber": rows[-1]["matchNumber"] + 1})
+        seen.add((_pair_key(home, away), day))
+        champion = _winner_name(
+            home, away, match["goals"]["home"], match["goals"]["away"],
+            match.get("penalties"), champion,
+        )
+    return rows
 
 
 def _resolve_team_id(
@@ -468,6 +494,11 @@ def _wiki_reconcile(
     opp_name = name_by_code.get(opp_code, opp_code or "Unknown")
     if _is_dup(seen_pairs, d, wiki_champ, opp_name):
         return champion, last_no, last_date, 0
+    if opp_name != champion:
+        raise ValueError(
+            f"Salto de linaje el {d}: Wikipedia dice que {wiki_champ} ganó a "
+            f"{opp_name}, pero el campeón guardado es {champion}."
+        )
     penalties = g.get("penalties")
     if g.get("champ_goals", 1) == g.get("opp_goals", 0) and not penalties:
         penalties = {"home": 1, "away": 0}
